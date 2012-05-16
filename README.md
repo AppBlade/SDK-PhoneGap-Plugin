@@ -4,7 +4,7 @@ AppBladeSDK PhoneGap Plugin
 Plugin for PhoneGap that uses the AppBlade SDK.
 
 ###Organization
-For each operating system currently supported by the SDK there is a `/Plugin` folder that contains the plugin, while `/Example` contains a sample project to get you started.
+For each operating system currently supported by the SDK there is a folder which contains a `/Plugin` folder that contains the plugin, and `/Example` folder which contains a sample project to get you started.
 
 ##Installation - iOS
 
