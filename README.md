@@ -12,3 +12,12 @@ Plugin for PhoneGap that uses the AppBlade SDK.
 5. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
 
 See the Example project included for examples using the other functions of the SDK.
+
+##Installation - Android
+
+1. Copy 'AppBlade.js` into your `www` directory.
+2. Add `AppBladePlugin.java` to your project.
+3. Add `<activity android:name="com.appblade.framework.RemoteAuthorizeActivity" android:screenOrientation="portrait" />` to your `AndroidManifest.xml`, so we can get the OAuth dialogue for authorization.
+3. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
+
+See the Example project included for examples using the other functions of the SDK.

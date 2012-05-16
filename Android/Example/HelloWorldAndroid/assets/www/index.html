@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>PhoneGap</title>
+<script type="text/javascript" charset="utf-8" src="cordova-1.7.0.js"></script>
+<script type="text/javascript" charset="utf-8" src="AppBlade.js"></script>
+
+        <script type="text/javascript" charset="utf-8">
+            
+            // Call onDeviceReady when PhoneGap is loaded.
+            //
+            // At this point, the document has loaded but phonegap-1.0.0.js has not.
+            // When PhoneGap is loaded and talking with the native device,
+            // it will call the event `deviceready`.
+            // 
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+            //
+            function onDeviceReady() {
+                window.plugins.appBlade.setupAppBlade('d98b31cd-0079-4f8b-b48c-0189c38a91e4','2750251e21a92bd962dd1bd6f66fa0f9','3b425267c9d714813a74330d9f5fa104','1322615243');
+//                window.plugins.appBlade.catchAndReportCrashes();
+//                window.plugins.appBlade.allowFeedbackReporting();
+                window.plugins.appBlade.checkAuthentication();
+                document.addEventListener("resume", onResume, false);
+            }
+            
+            function onResume() {
+                window.plugins.appBlade.checkAuthentication();
+            }
+            
+            </script>
+            
+</head>
+<body>
+<h1>Hello World</h1>
+</body>
+</html>
