@@ -21,3 +21,8 @@ See the Example project included for examples using the other functions of the S
 3. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
 
 See the Example project included for examples using the other functions of the SDK.
+
+
+#Resources:#
+###[AppBlade.com](https://appblade.com/)###
+###[License and Terms](https://appblade.com/terms_of_use)###
