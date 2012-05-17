@@ -38,13 +38,6 @@ public class AppBladePlugin extends Plugin {
 		}
 		else if (CHECKAPPROVAL.equals(action))
 		{
-			Log.d("AppBladePlugin", "Current activity name: " + this.ctx.getClass().getSimpleName());
-			long currentThreadId = Thread.currentThread().getId();
-	        long mainLooperThreadId = ((Activity)this.ctx).getMainLooper().getThread().getId();
-
-	        Log.d(AppBlade.LogTag, String.format("Current thread id: %d", currentThreadId));
-	        Log.d(AppBlade.LogTag, String.format("Main looper thread id: %d", mainLooperThreadId));
-	        
 	        // PhoneGap runs on its own thread. So we need one to display an alert and do our UI on.
 	        this.ctx.runOnUiThread(new Runnable() {
 	            
