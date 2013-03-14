@@ -13,9 +13,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-static NSString* const kAppBladeErrorDomain;
-static const int kAppBladeOfflineError;
-static NSString* const kAppBladeCacheDirectory;
+
+UIKIT_EXTERN NSString* const kAppBladeErrorDomain;
+UIKIT_EXTERN int const kAppBladeOfflineError;
+UIKIT_EXTERN int const kAppBladeParsingError;
+UIKIT_EXTERN int const kAppBladePermissionError;
+UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
+
+#define DEFAULT_APPBLADE_LOCATION_LOGGING_DISTANCE 10 //every ten meters
+#define DEFAULT_APPBLADE_LOCATION_LOGGING_TIME 900 //or every fifteen minutes
+
+
+
 @class AppBlade;
 
 @protocol AppBladeDelegate <NSObject>
@@ -28,18 +37,10 @@ static NSString* const kAppBladeCacheDirectory;
 
 @end
 
-@interface AppBlade : NSObject <AppBladeDelegate, UIAlertViewDelegate> {
+@interface AppBlade : NSObject <AppBladeDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate> 
 
-@private
-
-    id<AppBladeDelegate> _delegate;
-    NSURL *_upgradeLink;
-    
-    NSString *_appBladeProjectID;
-    NSString *_appBladeProjectToken;
-    NSString *_appBladeProjectSecret;
-    NSString *_appBladeProjectIssuedTimestamp;
-}
+// AppBlade host name //Include neither http:// nor https://, we'll handle that.
+@property (nonatomic, retain) NSString* appBladeHost;
 
 // UUID of the project on AppBlade.
 @property (nonatomic, retain) NSString* appBladeProjectID;
@@ -66,22 +67,53 @@ static NSString* const kAppBladeCacheDirectory;
 // AppBlade manager singleton.
 + (AppBlade *)sharedManager;
 
-// Checks if any crashes have ocurred sends logs to AppBlade.
+// Pass in the full path to the plist
+- (void)loadSDKKeysFromPlist:(NSString*)plist;
+
+// Sets up variables & Checks if any crashes have ocurred, sends logs to AppBlade.
 - (void)catchAndReportCrashes;
 
+//method to call if you want to attempt to send crash reports more often than ususal 
+- (void)checkForExistingCrashReports;
+
+
+
+//Define special custom fields to be sent back to Appblade in your Feedback reports or Crash reports
+-(NSDictionary *)getCustomParams;
+-(void)setCustomParams:(NSDictionary *)newFieldValues;
+-(void)setCustomParam:(NSString *)key withValue:(id)value;
+-(void)clearAllCustomParams;
+
+
 /*
- *    WARNING: The following features are only for ad hoc and enterprise applications. Shipping an app to the iTunes App
+ *    WARNING: The following features below are only for ad hoc and enterprise applications. Shipping an app to the iTunes App
  *    store with a call to |-checkApproval|, for example, could result in app termination or rejection.
  */
 
-// Checks with AppBlade to see if the app is allowed to run on this device.
+// Checks with AppBlade to see if the app is allowed to run on this device. Will also notify of updates.
 - (void)checkApproval;
 
-// Shows a feedback dialogue
-- (void)showFeedbackDialogue;
+// Checks with AppBlade anonymously to see if the app can be updated with a new build.
+- (void)checkForUpdates;
+
 + (NSString*)cachesDirectoryPath;
+
 // Sets up a 3-finger double tap for reporting feedback
 - (void)allowFeedbackReporting;
+
+// In case you only want 3-finger double tap feedback in a specific window.
+- (void)allowFeedbackReportingForWindow:(UIWindow*)window;
+
+// In case you want feedback but want to handle prompting it yourself (no 3-finger double tap).
+- (void)setupCustomFeedbackReporting;
+
+- (void)setupCustomFeedbackReportingForWindow:(UIWindow*)window;
+
+// Shows a feedback dialogue and handles screenshot
+- (void)showFeedbackDialogue;
+
++ (void)startSession;
++ (void)endSession;
 
 
 @end
