@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PhoneGap AppBladeSDK Custom Parameter Example</title>
+        <script type="text/javascript" src="cordova-ios-1.6.1.js"></script>
+        <script type="text/javascript" src="AppBlade.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                // Always set up appblade before calling any features. You only have to do it once within your app.
+                window.plugins.appBlade.setupAppBlade('','','','');
+                // Order: project, token, secret, issued timestamp
+                window.plugins.appBlade.catchAndReportCrashes();
+                
+                AppBlade.setCustomParameter('myFirstKey', 'This Is A Custom Value. These will get passed along with feedback reports.');
+                AppBlade.setCustomParameter('Disclaimer', 'Feedback will also send along a screenshot. Be careful what that screenshot contains.');
+            }
+            </script>
+    </head>
+    <body>
+        <center>
+            <h1>Feedback Reporting</h1>
+            <h3></h3>
+        </center>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PhoneGap AppBladeSDK Custom Parameter Example</title>
+        <script type="text/javascript" src="cordova-ios-1.6.1.js"></script>
+        <script type="text/javascript" src="AppBlade.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+                // Always set up appblade before calling any features. You only have to do it once within your app.
+                window.plugins.appBlade.setupAppBlade('','','','');
+                // Order: project, token, secret, issued timestamp
+                
+                AppBlade.setCustomParameter('myFirstKey', 'This Is A Custom Value. It gets sent along with AppBlade service calls along with the key value.');
+                //Current features that will send custom parameters along with their calls.
+                //Session Tracking
+                //Feedback Reporting
+                //Crash Reporting
+                
+                AppBlade.setCustomParameter('myFirstKey', 'Any values can be replaced.');
+                AppBlade.setCustomParameter('myFirstKey', null); //To clear a value, set it as nil
+                AppBlade.clearCustomParameters(); //All params can be cleared at once
+            }
+            </script>
+    </head>
+    <body>
+        <center>
+            <h1>Custom Parameters</h1>
+            <h3></h3>
+        </center>
+    </body>
+</html>
