@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3100840016F252DF009345C1 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 310083FF16F252DF009345C1 /* Default-568h@2x.png */; };
 		7E0726AC1561482C0092282B /* AppBladePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0726AB1561482C0092282B /* AppBladePlugin.m */; };
 		7E0726B0156154760092282B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E0726AF156154760092282B /* Security.framework */; };
 		7E690D8D1562937E009391BD /* libAppBladeUniversal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E690D8C1562937E009391BD /* libAppBladeUniversal.a */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310083FF16F252DF009345C1 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		7E0726AA1561482C0092282B /* AppBladePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppBladePlugin.h; path = Plugins/AppBladePlugin.h; sourceTree = "<group>"; };
 		7E0726AB1561482C0092282B /* AppBladePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppBladePlugin.m; path = Plugins/AppBladePlugin.m; sourceTree = "<group>"; };
 		7E0726AF156154760092282B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -127,6 +129,7 @@
 		7EDCBBE7155AC85B00D906D8 = {
 			isa = PBXGroup;
 			children = (
+				310083FF16F252DF009345C1 /* Default-568h@2x.png */,
 				7EDCBC51155AC89600D906D8 /* www */,
 				7EDCBC13155AC85B00D906D8 /* HelloWorld */,
 				7EDCBBF8155AC85B00D906D8 /* Frameworks */,
@@ -349,6 +352,7 @@
 				7EDCBC47155AC85B00D906D8 /* MainViewController.xib in Resources */,
 				7EDCBC4B155AC85B00D906D8 /* verify.sh in Resources */,
 				7EDCBC52155AC89600D906D8 /* www in Resources */,
+				3100840016F252DF009345C1 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
