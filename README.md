@@ -1,3 +1,8 @@
+<!-- 
+****************************
+NOTICE: THIS IS THE GITHUB README. FOR A BETTER READABLE README ON YOUR LOCAL MACHINE SEE README.txt IN THIS DIRECTORY 
+****************************
+-->
 AppBladeSDK PhoneGap Plugin
 ===================
 
