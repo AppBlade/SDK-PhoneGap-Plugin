@@ -12,24 +12,27 @@ var AppBlade = function(){};
 
 // --------------------------------------------------------
   
+//AppBlade Registration
 AppBlade.prototype.setupAppBlade = function(project, token, secret, timestamp) {
     cordova.exec("AppBlade.setupAppBlade", [project, token, secret, timestamp]);
 };
 
-
+//Update Checks
 AppBlade.prototype.checkForAnonymousUpdates = function() {
     cordova.exec("AppBlade.checkforUpdates");
 };
     
+//Authentication Checks
 AppBlade.prototype.checkAuthentication = function() {
     cordova.exec("AppBlade.checkAuthentication");
 };
 
+//Crash Reporting
 AppBlade.prototype.catchAndReportCrashes = function() {
     cordova.exec("AppBlade.catchAndReportCrashes");
 };
 
-
+//Feedback Reporting
 AppBlade.prototype.allowFeedbackReporting = function() {
     cordova.exec("AppBlade.allowFeedbackReporting");
 };
@@ -37,7 +40,7 @@ AppBlade.prototype.showFeedbackDialog = function() {
     cordova.exec("AppBlade.showFeedbackDialog");
 };
 
-
+//Session Logging
 AppBlade.prototype.startSession = function() {
     cordova.exec("AppBlade.startSession");
 };
@@ -47,7 +50,7 @@ AppBlade.prototype.endSession = function() {
 };
 
 
-
+//Custom Parameters
 AppBlade.prototype.setCustomParameter = function(key, value) {
     cordova.exec("AppBlade.setCustomParameter", [key, value]);
 };
@@ -56,7 +59,7 @@ AppBlade.prototype.setAllCustomParameters = function(dictionary) {
     cordova.exec("AppBlade.setCustomParameters", dictionary);
 };
 
-AppBlade.prototype.clearCustomParameterss = function() {
+AppBlade.prototype.clearCustomParameters = function() {
     cordova.exec("AppBlade.clearCustomParameters");
 };
 
