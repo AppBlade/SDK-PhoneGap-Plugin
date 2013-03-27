@@ -13,8 +13,8 @@ For each operating system currently supported by the SDK there is a folder which
 3. Follow directions for [adding plugins to your iOS project](http://wiki.phonegap.com/w/page/43708792/How%20to%20Install%20a%20PhoneGap%20Plugin%20for%20iOS).
 3. Follow directions for [adding the AppBlade SDK to your project](http://github.com/AppBlade/SDK).
 4. Add `-all_load` to the `other linker flags` build setting for your target.
-5. Add `appblade.com` to Cordova's url whitelist.
-5. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
+5. Add `AppBlade.com` to Cordova's url whitelist.
+6. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
 
 See the Example project included for examples using the other functions of the SDK.
 
