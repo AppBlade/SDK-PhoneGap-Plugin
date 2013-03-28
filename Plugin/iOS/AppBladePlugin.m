@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 AppBlade. All rights reserved.
 //
 
-#import "AppBladePlugin.h"
 #import "AppBlade.h"
+#import "AppBladePlugin.h"
 
 enum {
     ABProjectID = 0,
@@ -22,10 +22,10 @@ enum {
 {
     CDVPluginResult* pluginResult = nil;
     if (command.arguments != nil && [[command arguments] count] == 4) {
-        NSString* project = [[command arguments] objectAtIndex:ABProjectID];
-        NSString* token = [[command arguments] objectAtIndex:ABToken];
-        NSString* secret = [[command arguments] objectAtIndex:ABSecretKey];
-        NSString* timestamp = [[command arguments] objectAtIndex:ABTimestamp];
+        NSString* project = [[command arguments] objectAtIndex:0];
+        NSString* token =  [[command arguments] objectAtIndex:1];
+        NSString* secret = [[command arguments] objectAtIndex:2];
+        NSString* timestamp =  [[command arguments] objectAtIndex:3];
         
         AppBlade *blade = [AppBlade sharedManager];
         blade.appBladeProjectID = project;
@@ -44,7 +44,7 @@ enum {
 - (void)checkAuthentication:(CDVInvokedUrlCommand*)command
 {
     [[AppBlade sharedManager] checkApproval];
-    
+
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Check approval via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     
@@ -129,85 +129,85 @@ enum {
 
 //DEPRECATED METHODS. WILL BE REMOVED IN THE IMMEDIATE FUTURE
 
-- (void)setupAppBlade:(NSMutableArray*)args withDict:(NSMutableDictionary*)options
-{
-    NSArray* keys = [args objectAtIndex:0];
-    NSLog(@"Setup with stuff: %@", keys);
-    NSString* project = [keys objectAtIndex:ABProjectID];
-    NSString* token = [keys objectAtIndex:ABToken];
-    NSString* secret = [keys objectAtIndex:ABSecretKey];
-    NSString* timestamp = [keys objectAtIndex:ABTimestamp];
-    
-    AppBlade *blade = [AppBlade sharedManager];
-    blade.appBladeProjectID = project;
-    blade.appBladeProjectToken = token;
-    blade.appBladeProjectSecret = secret;
-    blade.appBladeProjectIssuedTimestamp = timestamp;
-}
-
-- (void)catchAndReportCrashes:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Catch and Report Crashes via Plugin");
-    [[AppBlade sharedManager] catchAndReportCrashes];
-}
-
-- (void)checkAuthentication:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Check approval via Plugin");
-    [[AppBlade sharedManager] checkApproval];
-}
-
-- (void)allowFeedbackReporting:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Allow Feedback via Plugin");
-    if(nil != args && [[args objectAtIndex:0] isKindOfClass:[NSString class]])
-    {
-        NSLog(@"Custom Feedback via Plugin");
-        if([((NSString *)[args objectAtIndex:0]) isEqualToString:@"Custom"])
-            [[AppBlade sharedManager] setupCustomFeedbackReporting];
-    }
-    else
-    {
-        [[AppBlade sharedManager] allowFeedbackReporting];
-    }
-}
-
-- (void)showFeedbackDialog:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Show Feedback via Plugin");
-    [[AppBlade sharedManager] showFeedbackDialogue];
-}
-
-
-
-- (void)startSession:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Start Session via Plugin");
-    [AppBlade startSession];
-}
-
-- (void)endSession:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"End Session via Plugin");
-    [AppBlade endSession];
-}
-
-
-- (void)setCustomParameter:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Setting a Custom Parameter via Plugin");
-    NSArray* keyAndVal = [args objectAtIndex:0];
-    NSString* key = [keyAndVal objectAtIndex:0];
-    NSString* val = [keyAndVal objectAtIndex:1];
-    
-    [[AppBlade sharedManager] setCustomParam:val forKey:key];
-}
-
-- (void)clearCustomParameters:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-{
-    NSLog(@"Clearing all parameters via Plugin");
-    [[AppBlade sharedManager] clearAllCustomParams];
-}
+//- (void)setupAppBlade:(NSMutableArray*)args withDict:(NSMutableDictionary*)options
+//{
+//    NSArray* keys = [args objectAtIndex:0];
+//    NSLog(@"Setup with stuff: %@", keys);
+//    NSString* project = [keys objectAtIndex:ABProjectID];
+//    NSString* token = [keys objectAtIndex:ABToken];
+//    NSString* secret = [keys objectAtIndex:ABSecretKey];
+//    NSString* timestamp = [keys objectAtIndex:ABTimestamp];
+//    
+//    AppBlade *blade = [AppBlade sharedManager];
+//    blade.appBladeProjectID = project;
+//    blade.appBladeProjectToken = token;
+//    blade.appBladeProjectSecret = secret;
+//    blade.appBladeProjectIssuedTimestamp = timestamp;
+//}
+//
+//- (void)catchAndReportCrashes:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Catch and Report Crashes via Plugin");
+//    [[AppBlade sharedManager] catchAndReportCrashes];
+//}
+//
+//- (void)checkAuthentication:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Check approval via Plugin");
+//    [[AppBlade sharedManager] checkApproval];
+//}
+//
+//- (void)allowFeedbackReporting:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Allow Feedback via Plugin");
+//    if(nil != args && [[args objectAtIndex:0] isKindOfClass:[NSString class]])
+//    {
+//        NSLog(@"Custom Feedback via Plugin");
+//        if([((NSString *)[args objectAtIndex:0]) isEqualToString:@"Custom"])
+//            [[AppBlade sharedManager] setupCustomFeedbackReporting];
+//    }
+//    else
+//    {
+//        [[AppBlade sharedManager] allowFeedbackReporting];
+//    }
+//}
+//
+//- (void)showFeedbackDialog:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Show Feedback via Plugin");
+//    [[AppBlade sharedManager] showFeedbackDialogue];
+//}
+//
+//
+//
+//- (void)startSession:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Start Session via Plugin");
+//    [AppBlade startSession];
+//}
+//
+//- (void)endSession:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"End Session via Plugin");
+//    [AppBlade endSession];
+//}
+//
+//
+//- (void)setCustomParameter:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Setting a Custom Parameter via Plugin");
+//    NSArray* keyAndVal = [args objectAtIndex:0];
+//    NSString* key = [keyAndVal objectAtIndex:0];
+//    NSString* val = [keyAndVal objectAtIndex:1];
+//    
+//    [[AppBlade sharedManager] setCustomParam:val forKey:key];
+//}
+//
+//- (void)clearCustomParameters:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
+//{
+//    NSLog(@"Clearing all parameters via Plugin");
+//    [[AppBlade sharedManager] clearAllCustomParams];
+//}
 
 
 @end

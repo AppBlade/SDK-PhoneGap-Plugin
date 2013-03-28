@@ -6,90 +6,133 @@
  *
  */
 
-// --------------------------------------------------------
+(function() {
+ 
+ var cordovaRef = window.PhoneGap || window.Cordova || window.cordova; // old to new fallbacks
+ 
+ function AppBlade() {
+    this.serviceName = "AppBlade";
+ }
+ 
+ //AppBlade Registration
+ AppBlade.prototype.setupAppBlade = function(_project, _token, _secret, _timestamp, _onSuccess, _onError) {
+     var successCallback = function(result) {
+         if (typeof _onSuccess == 'function') {
+             _onSuccess.apply(null, [result]);
+         }
+     };
+     var errorCallback = function(result) {
+         if (typeof _onError == 'function') {
+             _onError.apply(null, [result]);
+         }
+     };
+     return cordova.exec(successCallback, errorCallback, this.serviceName, 'setupAppBlade', [_project, _token, _secret, _timestamp]);
+ };
+ 
+ //Authentication Checks
+ AppBlade.prototype.checkAuthentication = function(_onSuccess, _onError) {
+     var successCallback = function(result) {
+         if (typeof _onSuccess == 'function') {
+             _onSuccess.apply(null, [result]);
+         }
+     };
+     var errorCallback = function(result) {
+         if (typeof _onError == 'function') {
+             _onError.apply(null, [result]);
+         }
+     };
+    return cordova.exec(successCallback, errorCallback, this.serviceName, 'checkAuthentication', []);
+ };
+ 
+ //Update Checks
+ AppBlade.prototype.checkForAnonymousUpdates = function(_onSuccess, _onError) {
+     var successCallback = function(result) {
+         if (typeof _onSuccess == 'function') {
+         _onSuccess.apply(null, [result]);
+         }
+     };
+     var errorCallback = function(result) {
+         if (typeof _onError == 'function') {
+         _onError.apply(null, [result]);
+         }
+     };
+     return cordova.exec(successCallback, errorCallback, this.serviceName, 'checkForUpdates', []);
+ };
 
-var AppBlade = function(){
-        this.serviceName = "AppBlade";
-};
+ //Crash Reporting
+ AppBlade.prototype.catchAndReportCrashes = function(_onSuccess, _onError) {
+ var successCallback = function(result) {
+ if (typeof _onSuccess == 'function') {
+ _onSuccess.apply(null, [result]);
+ }
+ };
+ var errorCallback = function(result) {
+ if (typeof _onError == 'function') {
+ _onError.apply(null, [result]);
+ }
+ };
+ return PhoneGap.exec(successCallback, errorCallback, this.serviceName, "catchAndReportCrashes", []);
+ };
+ 
+ 
+ //Feedback Reporting
+ AppBlade.prototype.allowFeedbackReporting = function(_onSuccess, _onError) {
+ var successCallback = function(result) {
+ if (typeof _onSuccess == 'function') {
+ _onSuccess.apply(null, [result]);
+ }
+ };
+ var errorCallback = function(result) {
+ if (typeof _onError == 'function') {
+ _onError.apply(null, [result]);
+ }
+ };
+return PhoneGap.exec(successCallback, errorCallback, this.serviceName, "allowFeedbackReporting", []);
+ };
+ AppBlade.prototype.showFeedbackDialog = function(_onSuccess, _onError) {
+ var successCallback = function(result) {
+ if (typeof _onSuccess == 'function') {
+ _onSuccess.apply(null, [result]);
+ }
+ };
+ var errorCallback = function(result) {
+ if (typeof _onError == 'function') {
+ _onError.apply(null, [result]);
+ }
+ };
 
-// --------------------------------------------------------
+ return PhoneGap.exec(successCallback, errorCallback, this.serviceName, "showFeedbackDialog", []);
+ };
 
-//AppBlade Registration
-AppBlade.prototype.setupAppBlade = function(project, token, secret, timestamp, successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.setupAppBlade", [project, token, secret, timestamp], successFunction);
-};
+ 
+ //Session Logging
+ AppBlade.prototype.startSession = function(successFunction, failFunction) {
+ return PhoneGap.exec(successFunction, failFunction, this.serviceName, "startSession", []);
+ };
+ 
+ AppBlade.prototype.endSession = function(successFunction, failFunction) {
+ return PhoneGap.exec(successFunction, failFunction, this.serviceName, "endSession", []);
+ };
+ 
+ 
+ //Custom Parameters
+ AppBlade.prototype.setCustomParameter = function(key, value, successFunction, failFunction) {
+ return PhoneGap.exec(successFunction, failFunction, this.serviceName, "setCustomParameter", [key, value]);
+ };
+ 
+ AppBlade.prototype.setAllCustomParameters = function(dictionary, successFunction, failFunction) {
+ return cordova.exec(successFunction, failFunction, this.serviceName, "setCustomParameters", [dictionary]);
+ };
+ 
+ AppBlade.prototype.clearCustomParameters = function(successFunction, failFunction) {
+ return PhoneGap.exec(successFunction, failFunction, this.serviceName, "clearCustomParameters", []);
+ };
 
-//Update Checks
-AppBlade.prototype.checkForAnonymousUpdates = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.checkforUpdates", []);
-};
+ 
+ cordova.addConstructor(function() {
+                        if(!window.plugins) window.plugins = {};
+                            window.plugins.appBlade = new AppBlade();
+                        });
+ 
+ })(window.cordova || window.Cordova);
 
-//Authentication Checks
-AppBlade.prototype.checkAuthentication = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.checkAuthentication", []);
-};
-
-//Crash Reporting
-AppBlade.prototype.catchAndReportCrashes = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.catchAndReportCrashes", []);
-};
-
-//Feedback Reporting
-AppBlade.prototype.allowFeedbackReporting = function(successFunction, failFunction) {
-   return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.allowFeedbackReporting", []);
-};
-AppBlade.prototype.showFeedbackDialog = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.showFeedbackDialog", []);
-};
-
-//Session Logging
-AppBlade.prototype.startSession = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.startSession", []);
-};
-
-AppBlade.prototype.endSession = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.endSession", []);
-};
-
-
-//Custom Parameters
-AppBlade.prototype.setCustomParameter = function(key, value, successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.setCustomParameter", [key, value]);
-};
-
-AppBlade.prototype.setAllCustomParameters = function(dictionary, successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.setCustomParameters", [dictionary]);
-};
-
-AppBlade.prototype.clearCustomParameters = function(successFunction, failFunction) {
-    return cordova.exec(successFunction, failFunction, this.serviceName, "AppBlade.clearCustomParameters", []);
-};
-
-// --------------------------------------------------------
-
-
-AppBlade.install = = function(){
-    if (typeof window.plugins == "undefined") window.plugins = {};
-    if (typeof window.plugins.AppBlade == "undefined") window.plugins.AppBlade = new AppBlade();
-    return window.plugins.AppBlade;
-};
-
-if(!window.plugins) {
-    window.plugins = {};
-}
-
-if (!window.plugins.AppBlade) {
-    window.plugins.AppBlade = new AppBlade();
-}
-
-
-// --------------------------------------------------------
-
-cordova.addConstructor(function() {
-                       if (!window.Cordova) {
-                       window.Cordova = cordova;
-                       };
-                       
-                       if(!window.plugins) window.plugins = {};
-                       window.plugins.appBlade = new AppBlade();
-                       });
