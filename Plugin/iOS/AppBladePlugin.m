@@ -78,6 +78,12 @@ enum {
 
 - (void)showFeedbackDialog:(CDVInvokedUrlCommand*)command
 {
+    if([[command arguments] count] == 1)
+    {
+        NSString *noScreenShotCheck = (NSString *)[[command arguments] objectAtIndex:0];
+        [[noScreenShotCheck lowercaseString] isEqualToString:@"noscreenshot"];
+    }
+    
     [[AppBlade sharedManager] showFeedbackDialogue];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Show Feedback via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
