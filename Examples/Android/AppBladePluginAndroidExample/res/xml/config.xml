@@ -101,7 +101,16 @@
     <feature name="InAppBrowser">
       <param name="android-package" value="org.apache.cordova.InAppBrowser"/>
     </feature>
+    
+    <!--  feature name="AppBlade">
+      <param name="AppBlade" value="com.appblade.phonegappluginexample.AppBladePlugin"/>
+    </feature -->
+
+	<!-- New format for plugins
+	<gap:plugin name="com.appblade.phonegappluginexample.AppBladePlugin" /> 
+	-->
     <!-- Deprecated plugins element. Remove in 3.0 -->
     <plugins>
+        <plugin name="AppBlade" value="com.appblade.phonegappluginexample.AppBladePlugin"/>
     </plugins>
 </widget>

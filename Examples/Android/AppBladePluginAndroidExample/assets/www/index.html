@@ -32,11 +32,43 @@
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
             </div>
+            <div> </div>
+            <div>
+            	<a onclick="onFeedbackClick();" href="javascript:Void();" >Display Feedback </a>
+            </div>
+            <div> </div>
+            <div>
+            	<a onclick="onStartSession();" href="javascript:Void();" >Start Session</a>
+            </div>
+            <div> </div>
+            <div>
+            	<a onclick="onEndSession();" href="javascript:Void();" >End Session</a>
+            </div>
+            <div> </div>
+            <div>
+            	<a onclick="onFeedbackClickNoScreenShot();" href="javascript:Void();" >Display Feedback (No Screenshot) </a>
+            </div>
+
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/AppBlade.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
-        </script>
+            
+            function onFeedbackClick(){
+				plugins.appBlade.showFeedbackDialog();
+            }
+            function onStartSession(){
+				plugins.appBlade.startSession();
+            }
+            function onEndSession(){
+				plugins.appBlade.endSession();
+            }
+            
+            function onFeedbackClickNoScreenShot(){
+				plugins.appBlade.showFeedbackDialog("noScreenshot");
+            }
+            </script>
     </body>
 </html>
