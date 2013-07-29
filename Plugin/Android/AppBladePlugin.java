@@ -3,6 +3,7 @@
  */
 package com.example.cordovaandroidtestproject;
 
+import java.util.Locale;
 
 import org.apache.cordova.api.CallbackContext;
 import org.apache.cordova.api.CordovaPlugin;
@@ -69,7 +70,7 @@ public class AppBladePlugin extends CordovaPlugin {
 	    	boolean includeScreenshot = true;
 	    	if(args.length() == 1)
 	    	{
-	    		includeScreenshot = !(SHOWFEEDBACKDIALOG_NOSCREENSHOTCHECK.equals(args.getString(0).toLowerCase()));
+	    		includeScreenshot = !(SHOWFEEDBACKDIALOG_NOSCREENSHOTCHECK.equals(args.getString(0).toLowerCase(Locale.US)));
 	    	}
 			showFeedbackDialog(callbackContext, includeScreenshot);
 	    }
