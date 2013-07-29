@@ -1,8 +1,7 @@
 /**
  * 
  */
-package com.example.cordovaandroidtestproject;
-
+import java.util.Locale;
 
 import org.apache.cordova.api.CallbackContext;
 import org.apache.cordova.api.CordovaPlugin;
@@ -69,7 +68,7 @@ public class AppBladePlugin extends CordovaPlugin {
 	    	boolean includeScreenshot = true;
 	    	if(args.length() == 1)
 	    	{
-	    		includeScreenshot = !(SHOWFEEDBACKDIALOG_NOSCREENSHOTCHECK.equals(args.getString(0).toLowerCase()));
+	    		includeScreenshot = !(SHOWFEEDBACKDIALOG_NOSCREENSHOTCHECK.equals(args.getString(0).toLowerCase(Locale.US)));
 	    	}
 			showFeedbackDialog(callbackContext, includeScreenshot);
 	    }
@@ -102,53 +101,104 @@ public class AppBladePlugin extends CordovaPlugin {
 	///
 	/// Private methods to simplify the entry point
 	///
-	private void setupAppBlade(String projectUuid, String token, String secret, String timestamp, CallbackContext callbackContext){
-		AppBlade.register(this.cordova.getActivity().getApplicationContext(), token, secret, projectUuid, timestamp);
+	private void setupAppBlade(final String projectUuid, final  String token, final String secret, final String timestamp, final CallbackContext callbackContext){
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+            	AppBlade.register(cordova.getActivity(), token, secret, projectUuid, timestamp);
+            	callbackContext.success();
+            }
+        });
+
 	}
 		
-	private void checkAuthentication(CallbackContext callbackContext){
-        // PhoneGap runs on its own thread. So we need one to display an alert and do our UI on.
-//		cordova.getThreadPool().execute
-        AppBlade.authorize(this.cordova.getActivity());
+	private void checkAuthentication(final CallbackContext callbackContext){
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+            	AppBlade.authorize(cordova.getActivity());
+            	callbackContext.success();
+            }
+		});
+
 	}
 	
-	private void checkForUpdates(CallbackContext callbackContext) {
-		AppBlade.checkForUpdates(this.cordova.getActivity());
+	private void checkForUpdates(final CallbackContext callbackContext) {
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+            	AppBlade.checkForUpdates(cordova.getActivity());
+            	callbackContext.success();
+            }
+        });
+
 	}
 
-	
-	private void showFeedbackDialog(CallbackContext callbackContext, boolean includeScreenshot) {
-		if(includeScreenshot){
-			AppBlade.doFeedbackWithScreenshot(this.cordova.getActivity(), this.cordova.getActivity().getCurrentFocus());
-		}
-		else
+	private void showFeedbackDialog(final CallbackContext callbackContext, boolean includeScreenshot) {
+		if(includeScreenshot)
 		{
-			AppBlade.doFeedback(this.cordova.getActivity());
+			cordova.getActivity().runOnUiThread(new Runnable() {
+	       public void run() {
+	            AppBlade.doFeedbackWithScreenshot(cordova.getActivity(), cordova.getActivity().getCurrentFocus());
+	            callbackContext.success();
+	       		}
+			});
+		} 
+		else 
+		{
+			cordova.getActivity().runOnUiThread(new Runnable() {
+			       public void run() {
+	        AppBlade.doFeedback(cordova.getActivity());
+	        callbackContext.success();
+			       }
+			});
 		}
 	}
 
-
-	private void startSession(CallbackContext callbackContext) {
-		AppBlade.startSession(this.cordova.getActivity());
+	private void startSession(final CallbackContext callbackContext) {
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+        		AppBlade.startSession(cordova.getActivity());
+            	callbackContext.success();
+            }
+        });
 	}
 
-	private void endSession(CallbackContext callbackContext) {
-		AppBlade.endSession(this.cordova.getActivity());
+	private void endSession(final CallbackContext callbackContext) {
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+        		AppBlade.endSession(cordova.getActivity());
+            	callbackContext.success();
+            }
+        });
 	}
 
-	private void setCustomParameter(String object, String key,
-			CallbackContext callbackContext) throws JSONException {
-		AppBlade.setCustomParameterThrowy(this.cordova.getActivity(), key, object);
+	private void setCustomParameter(final String object, final String key, final CallbackContext callbackContext) throws JSONException {
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+				try {
+					AppBlade.setCustomParameterThrowy(cordova.getActivity(), key, object);
+					callbackContext.success();
+				} catch (JSONException e) {
+					callbackContext.error(e.getLocalizedMessage());
+				}
+            }
+        });
 	}
 
-	private void setAllCustomParameters(JSONObject allParams,
-			CallbackContext callbackContext) {
-		CustomParamDataHelper.storeCurrentCustomParams(this.cordova.getActivity(), new CustomParamData(allParams));
+	private void setAllCustomParameters(final JSONObject allParams, final CallbackContext callbackContext) {
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+				CustomParamDataHelper.storeCurrentCustomParams(cordova.getActivity(), new CustomParamData(allParams));
+            	callbackContext.success();
+		    }
+		});
 	}
 
-	private void clearAllCustomParameters(CallbackContext callbackContext) {
-		AppBlade.clearCustomParameters(this.cordova.getActivity());
+	private void clearAllCustomParameters(final CallbackContext callbackContext) {
+		cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+				AppBlade.clearCustomParameters(cordova.getActivity());
+            	callbackContext.success();
+		    }
+		});
 	}
 
-	
 }
