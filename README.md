@@ -103,7 +103,7 @@ See the Example projects included for examples using the other functions of the 
 <br/>
 7. Link your PhoneGap project to AppBlade.com  
   *7a.* To use AppBlade features the app must first exist on AppBlade (click [+ New Project] after signing in). Get   your project keys by navigating to your AppBlade project and selecting "Reveal your API Keys".
-<br/>*7b.* In your `index.html`, underneath the `app.receivedEvent('deviceready');` call the setup method with your SDK keys in the order they appear on the AppBlade site: UUID, token, secret, issued at.
+<br/>*7b.* In your `index.js`, underneath the `app.receivedEvent('deviceready');` call the setup method with your SDK keys in the order they appear on the AppBlade site: UUID, token, secret, issued at.
 The following example sets up the app blade plugin with API keys (actual values not used), sets up the crash reporter, and sets up feedback reporting. 
 
         onDeviceReady: function() {
@@ -112,7 +112,7 @@ The following example sets up the app blade plugin with API keys (actual values 
           plugins.appBlade.catchAndReportCrashes();
           plugins.appBlade.allowFeedbackReporting();
         },
-        
+
 See the Example project included for examples using the other functions of the SDK.
 
 
