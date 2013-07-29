@@ -131,28 +131,26 @@ public class AppBladePlugin extends CordovaPlugin {
 
 	}
 
-	
 	private void showFeedbackDialog(final CallbackContext callbackContext, boolean includeScreenshot) {
 		if(includeScreenshot)
 		{
-			cordova.getThreadPool().execute(new Runnable() {
-	            public void run() {
-	            	AppBlade.doFeedbackWithScreenshot(cordova.getActivity(), cordova.getActivity().getCurrentFocus());
-	            	callbackContext.success();
-	            }
-	        });
+			cordova.getActivity().runOnUiThread(new Runnable() {
+	       public void run() {
+	            AppBlade.doFeedbackWithScreenshot(cordova.getActivity(), cordova.getActivity().getCurrentFocus());
+	            callbackContext.success();
+	       		}
+			});
 		} 
 		else 
 		{
-			cordova.getThreadPool().execute(new Runnable() {
-	            public void run() {
-	            	AppBlade.doFeedback(cordova.getActivity());
-	            	callbackContext.success();
-	            }
-	        });
+			cordova.getActivity().runOnUiThread(new Runnable() {
+			       public void run() {
+	        AppBlade.doFeedback(cordova.getActivity());
+	        callbackContext.success();
+			       }
+			});
 		}
 	}
-
 
 	private void startSession(final CallbackContext callbackContext) {
 		cordova.getThreadPool().execute(new Runnable() {
