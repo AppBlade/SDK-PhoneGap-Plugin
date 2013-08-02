@@ -22,16 +22,8 @@ enum {
 {
     CDVPluginResult* pluginResult = nil;
     if (command.arguments != nil && [[command arguments] count] == 4) {
-        NSString* project = [[command arguments] objectAtIndex:0];
-        NSString* token =  [[command arguments] objectAtIndex:1];
-        NSString* secret = [[command arguments] objectAtIndex:2];
-        NSString* timestamp =  [[command arguments] objectAtIndex:3];
-        
         AppBlade *blade = [AppBlade sharedManager];
-        blade.appBladeProjectID = project;
-        blade.appBladeProjectToken = token;
-        blade.appBladeProjectSecret = secret;
-        blade.appBladeProjectIssuedTimestamp = timestamp;
+        [blade registerWithAppBladePlist];
 
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     } else {
@@ -70,7 +62,19 @@ enum {
 
 - (void)allowFeedbackReporting:(CDVInvokedUrlCommand*)command
 {
-    [[AppBlade sharedManager] allowFeedbackReporting];
+    NSLog(@"allowFeedbackReporting");
+
+    NSString* resultMessage = @"Allow Feedback via Plugin";
+    if(nil != command.arguments && [[command arguments] count] == 1 && [[[command arguments] objectAtIndex:0] isKindOfClass:[NSString class]])
+    {
+        resultMessage =  @"Custom Feedback via Plugin";
+        if([((NSString *)[[command arguments] objectAtIndex:0]) isEqualToString:@"Custom"])
+            [[AppBlade sharedManager] setupCustomFeedbackReporting];
+    }
+    else
+    {
+        [[AppBlade sharedManager] allowFeedbackReporting];
+    }
     
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Catch and Report Crashes via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -109,19 +113,19 @@ enum {
 
 - (void)setCustomParameter:(CDVInvokedUrlCommand*)command
 {
-    NSString* resultMessage = @"Allow Feedback via Plugin";
-    if(nil != command.arguments && [[[command arguments] objectAtIndex:0] isKindOfClass:[NSString class]])
+    CDVPluginResult* pluginResult = nil;
+    if([[command arguments] count] == 2)
     {
-        resultMessage =  @"Custom Feedback via Plugin";
-        if([((NSString *)[[command arguments] objectAtIndex:0]) isEqualToString:@"Custom"])
-            [[AppBlade sharedManager] setupCustomFeedbackReporting];
+        NSString* key = [[command arguments] objectAtIndex:0];
+        NSString* val = [[command arguments] objectAtIndex:1];
+        [[AppBlade sharedManager] setCustomParam:val forKey:key];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Setting a Custom Parameter via Plugin"];
     }
     else
     {
-        [[AppBlade sharedManager] allowFeedbackReporting];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect number of arguments"];
     }
-    
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:resultMessage];
+
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
 }
