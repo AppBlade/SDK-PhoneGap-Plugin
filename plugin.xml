@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.appblade.cordova.plugin"
+    version="0.9.0">
+    <name>AppBlade SDK</name>
+	<description>AppBlade's Official Cordova Plugin</description>
+	
+	<keywords>android,ios,crash,reporting,feedback,mam,killswitch</keywords>
+
+	
+    <engines>
+        <engine name="cordova" version=">=2.5.0" />
+    </engines>
+	
+    <access origin="*.appblade.com" />
+    <asset src="www/testflight.js" target="plugins/testflight.js" />
+
+    <!-- ios -->
+    <platform name="ios">
+
+        <config-file target="config.xml" parent="/*/plugins">
+            <plugin name="AppBladeSDK" value="CDVTestFlight"/>
+        </config-file>
+        
+        <!-- feature tag in config.xml -->
+        <config-file target="config.xml" parent="/widget">
+          <feature name="AppBladeSDK">
+            <param name="ios-package" value="CDVTestFlight"/>
+          </feature>
+        </config-file>
+
+        <header-file src="src/ios/AppBlade.h" />
+        <header-file src="src/ios/AppBladePlugin.h"/>
+        <source-file src="src/ios/AppBladePlugin.m" />
+        <source-file src="src/ios/libAppBlade.a" framework="true"/>
+<framework src="Security.framework"/>
+    
+        <info>
+			Make sure you add &lt;script src="plugins/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
+	    	And have added all necessary files (see github.com/AppBlade/SDK for full information)
+	    </info>
+    </platform>
+    <!-- android -->
+    <platform name="android">
+
+        <header-file src="src/android/AppBladePlugin.java"/>
+        <source-file src="src/android/AppBlade\ Framework.a"/>
+<framework src="httpmime-4.1.2.jar" />
+
+        <info>
+			Make sure you add &lt;script src="plugins/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
+	    	And have added all necessary files (see github.com/AppBlade/SDK for full information)
+	    </info>
+    </platform>    
+</plugin>
