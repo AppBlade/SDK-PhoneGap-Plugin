@@ -16,7 +16,7 @@ For each operating system currently supported by the SDK there is a folder in th
 1. Copy `AppBlade.js` into your `www/js` directory.
 <br/> 
 <br/>
-2. Copy `AppBladePlugin.h` and 'AppBladePlugin.m' into your Plugins folder.
+2. Copy `AppBladePlugin.h` and `AppBladePlugin.m` into your Plugins folder.
 <br/> 
 <br/>
 3. Add the AppBlade SDK to your project. 
