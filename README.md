@@ -8,15 +8,23 @@ AppBladeSDK PhoneGap Plugin
 
 Plugin for PhoneGap that uses the AppBlade SDK.
 
+Current supported Cordova versions : 2.5.0 - 2.9.0
+
+Pending release: [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0)
+
 ###Organization
 For each operating system currently supported by the SDK there is a folder in the `/Plugin` folder that contains the plugin, and a project in the `/Examples` folder which should help you get started.
+
+
+##Manual Installation
+Currently only the manual installation is supported. Plugman is going to be officially supported in the very near future.  
 
 ##Installation - iOS
 
 1. Copy `AppBlade.js` into your `www/js` directory.
 <br/> 
 <br/>
-2. Copy `AppBladePlugin.h` and 'AppBladePlugin.m' into your Plugins folder.
+2. Copy `AppBladePlugin.h` and `AppBladePlugin.m` into your Plugins folder.
 <br/> 
 <br/>
 3. Add the AppBlade SDK to your project. 
@@ -41,7 +49,7 @@ For each operating system currently supported by the SDK there is a folder in th
 <br/>*There are many ways to do this, as AppBlade.js can be treated jet like  any other js file. This is just an example:* 
 <br/>*6a.* In your `index.html` file add `<script type="text/javascript" src="js/AppBlade.js"></script>` after the "cordova-2.5.0.js" script reference and before the "js/index.js" script reference:
 
-        <script type="text/javascript" src="cordova-2.5.0.js"></script>
+        <script type="text/javascript" src="cordova-[2.5.0+].js"></script>
         <script type="text/javascript" src="js/AppBlade.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 <br/>
@@ -97,7 +105,7 @@ See the Example projects included for examples using the other functions of the 
 <br/>*There are many ways to do this, as AppBlade.js can be treated jet like  any other js file. This is just an example:* 
 <br/>*6a.* In your `index.html` file add `<script type="text/javascript" src="js/AppBlade.js"></script>` after the "cordova-2.5.0.js" script reference and before the "js/index.js" script reference:
 
-        <script type="text/javascript" src="cordova-2.5.0.js"></script>
+        <script type="text/javascript" src="cordova-[2.5.0+].js"></script>
         <script type="text/javascript" src="js/AppBlade.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 <br/>
