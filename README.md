@@ -9,6 +9,7 @@ AppBladeSDK PhoneGap Plugin
 Plugin for PhoneGap that uses the AppBlade SDK.
 
 Current supported Cordova versions : 2.5.0 - 2.9.0
+
 Pending release: [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0)
 
 ###Organization
