@@ -14,7 +14,7 @@ For each operating system currently supported by the SDK there is a folder in th
 ##Manual Installation
 Currently only the manual installation is supported. Plugman is going to be officially supported in the very near future.  
 
-## iOS
+##Installation - iOS
 
 1. Copy `AppBlade.js` into your `www/js` directory.
 <br/> 
