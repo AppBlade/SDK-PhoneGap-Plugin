@@ -1,6 +1,6 @@
 //
 //  AppBlade.h
-//  AppBlade
+//  AppBlade iOS SDK v0.5.0
 //
 //  Created by Craig Spitzkoff on 6/1/11.
 //  Copyright 2011 AppBlade. All rights reserved.
@@ -8,7 +8,6 @@
 //  For instructions on how to use this library, please look at the README.
 //
 //  Support and FAQ can be found at http://support.appblade.com
-//
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -19,10 +18,6 @@ UIKIT_EXTERN int const kAppBladeOfflineError;
 UIKIT_EXTERN int const kAppBladeParsingError;
 UIKIT_EXTERN int const kAppBladePermissionError;
 UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
-
-#define DEFAULT_APPBLADE_LOCATION_LOGGING_DISTANCE 10 //every ten meters
-#define DEFAULT_APPBLADE_LOCATION_LOGGING_TIME 900 //or every fifteen minutes
-
 
 
 @class AppBlade;
@@ -42,17 +37,12 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 // AppBlade host name //Include neither http:// nor https://, we'll handle that.
 @property (nonatomic, retain) NSString* appBladeHost;
 
-// UUID of the project on AppBlade.
-@property (nonatomic, retain) NSString* appBladeProjectID;
-
-// AppBlade API token for the project.
-@property (nonatomic, retain) NSString* appBladeProjectToken;
-
-// AppBlade API secret for the project. 
-@property (nonatomic, retain) NSString* appBladeProjectIssuedTimestamp;
-
-// AppBlade API project issued time.
+// AppBlade API project issued secret.
 @property (nonatomic, retain) NSString* appBladeProjectSecret;
+
+// AppBlade API project issued device secret. 
+@property (nonatomic, retain) NSString* appBladeDeviceSecret;
+
 
 // The AppBlade delegate receives messages regarding device authentication and other events.
 // See protocol declaration, above.
@@ -64,11 +54,19 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 // Log SDK Version
 + (void)logSDKVersion;
 
+
 // AppBlade manager singleton.
 + (AppBlade *)sharedManager;
 
-// Pass in the full path to the plist
-- (void)loadSDKKeysFromPlist:(NSString*)plist;
+// Use the plist that AppBlade embeds for the iOS settings
+- (void)registerWithAppBladePlist;
+- (void)registerWithAppBladePlist:(NSString*)plistName;
+
+//Device secret calls
+-(void)clearAppBladeKeychain;
+
+- (void) setAppBladeDeviceSecret:(NSString *)appBladeDeviceSecret;
+
 
 // Sets up variables & Checks if any crashes have ocurred, sends logs to AppBlade.
 - (void)catchAndReportCrashes;
@@ -81,8 +79,8 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 //Define special custom fields to be sent back to Appblade in your Feedback reports or Crash reports
 -(NSDictionary *)getCustomParams;
 -(void)setCustomParams:(NSDictionary *)newFieldValues;
--(void)setCustomParam:(id)newObject withValue:(NSString*)key __attribute__((deprecated)); 
--(void)setCustomParam:(id)object forKey:(NSString*)key; //use this instead of the deprecated -(void)setCustomParam:(id)newObject withValue:(NSString*)key
+-(void)setCustomParam:(id)newObject withValue:(NSString*)key __attribute__((deprecated("use method -(void)setCustomParam:(id)object forKey:(NSString*)keyme")));
+-(void)setCustomParam:(id)object forKey:(NSString*)key;
 -(void)clearAllCustomParams;
 
 
@@ -94,9 +92,8 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 // Checks with AppBlade to see if the app is allowed to run on this device. Will also notify of updates.
 - (void)checkApproval;
 
-// Approval check with ability to disable the check/notification for updates.
-- (void)checkApprovalWithUpdatePrompt:(BOOL)shouldPrompt;
-
+// Approval check with ability to disable the check/notification for updates. DEPRECATED
+- (void)checkApprovalWithUpdatePrompt:(BOOL)shouldPrompt __attribute__((deprecated("use method - (void)checkForUpdates for update checks from now on")));
 
 // Checks with AppBlade anonymously to see if the app can be updated with a new build.
 - (void)checkForUpdates;
@@ -104,6 +101,7 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 
 //Path to the AppBlade cache directory. Useful for direct modificaion of stored requests.
 + (NSString*)cachesDirectoryPath;
++ (void)clearCacheDirectory;
 
 // Sets up a 3-finger double tap for reporting feedback
 - (void)allowFeedbackReporting;
@@ -124,5 +122,13 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 + (void)startSession;
 + (void)endSession;
 
+
+- (void)refreshToken:(NSString *)tokenToConfirm;
+- (void)confirmToken:(NSString *)tokenToConfirm;
+
+-(BOOL)isAppStoreBuild;
+
+-(void)sanitizeKeychain;
+-(void)cleanOutKeychain;
 
 @end
