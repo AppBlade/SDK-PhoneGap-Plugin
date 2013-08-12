@@ -1,0 +1,6 @@
+int drawable appblade_framework_notification_icon 0x7f020000
+int drawable ic_launcher 0x7f020001
+int id authContainer 0x7f050000
+int id webview 0x7f050001
+int layout appblade_framework_auth 0x7f030000
+int string appblade_framework_app_name 0x7f040000
