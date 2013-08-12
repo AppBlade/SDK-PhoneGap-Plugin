@@ -11,7 +11,10 @@ Plugin for PhoneGap that uses the AppBlade SDK.
 ###Organization
 For each operating system currently supported by the SDK there is a folder in the `/Plugin` folder that contains the plugin, and a project in the `/Examples` folder which should help you get started.
 
-##Installation - iOS
+##Manual Installation
+Currently only the manual installation is supported. Plugman is going to be officially supported in the very near future.  
+
+## iOS
 
 1. Copy `AppBlade.js` into your `www/js` directory.
 <br/> 
