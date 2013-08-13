@@ -42,9 +42,7 @@
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		31598D6217BA900D0025E75D /* AppBladeKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6017BA900D0025E75D /* AppBladeKeys.plist */; };
 		31598D6317BA900D0025E75D /* ResourceRules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6117BA900D0025E75D /* ResourceRules.plist */; };
-		31598D6917BAA6150025E75D /* AppBladeKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6617BAA6150025E75D /* AppBladeKeys.plist */; };
 		31598D6A17BAA6150025E75D /* libAppBladeUniversal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31598D6717BAA6150025E75D /* libAppBladeUniversal.a */; };
-		31598D6B17BAA6150025E75D /* ResourceRules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6817BAA6150025E75D /* ResourceRules.plist */; };
 		3195834A1705E50E0053F95A /* AppBladePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 319583491705E50E0053F95A /* AppBladePlugin.m */; };
 		3195834C1705E6070053F95A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3195834B1705E6070053F95A /* Security.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -110,9 +108,7 @@
 		31598D6017BA900D0025E75D /* AppBladeKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppBladeKeys.plist; path = AppBladePluginiOSExample/AppBladeKeys.plist; sourceTree = "<group>"; };
 		31598D6117BA900D0025E75D /* ResourceRules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ResourceRules.plist; path = AppBladePluginiOSExample/ResourceRules.plist; sourceTree = "<group>"; };
 		31598D6517BAA6150025E75D /* AppBlade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBlade.h; sourceTree = "<group>"; };
-		31598D6617BAA6150025E75D /* AppBladeKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppBladeKeys.plist; sourceTree = "<group>"; };
 		31598D6717BAA6150025E75D /* libAppBladeUniversal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppBladeUniversal.a; sourceTree = "<group>"; };
-		31598D6817BAA6150025E75D /* ResourceRules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ResourceRules.plist; sourceTree = "<group>"; };
 		319583481705E50E0053F95A /* AppBladePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBladePlugin.h; sourceTree = "<group>"; };
 		319583491705E50E0053F95A /* AppBladePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppBladePlugin.m; sourceTree = "<group>"; };
 		3195834B1705E6070053F95A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -319,9 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				31598D6517BAA6150025E75D /* AppBlade.h */,
-				31598D6617BAA6150025E75D /* AppBladeKeys.plist */,
 				31598D6717BAA6150025E75D /* libAppBladeUniversal.a */,
-				31598D6817BAA6150025E75D /* ResourceRules.plist */,
 			);
 			name = AppBladeSDK;
 			path = AppBladePluginiOSExample/Plugins/AppBladeSDK;
@@ -420,8 +414,6 @@
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
 				31598D6217BA900D0025E75D /* AppBladeKeys.plist in Resources */,
 				31598D6317BA900D0025E75D /* ResourceRules.plist in Resources */,
-				31598D6917BAA6150025E75D /* AppBladeKeys.plist in Resources */,
-				31598D6B17BAA6150025E75D /* ResourceRules.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
