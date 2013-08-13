@@ -42,7 +42,9 @@
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		31598D6217BA900D0025E75D /* AppBladeKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6017BA900D0025E75D /* AppBladeKeys.plist */; };
 		31598D6317BA900D0025E75D /* ResourceRules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6117BA900D0025E75D /* ResourceRules.plist */; };
-		319583471705E5030053F95A /* libAppBladeUniversal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 319583461705E5030053F95A /* libAppBladeUniversal.a */; };
+		31598D6917BAA6150025E75D /* AppBladeKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6617BAA6150025E75D /* AppBladeKeys.plist */; };
+		31598D6A17BAA6150025E75D /* libAppBladeUniversal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31598D6717BAA6150025E75D /* libAppBladeUniversal.a */; };
+		31598D6B17BAA6150025E75D /* ResourceRules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6817BAA6150025E75D /* ResourceRules.plist */; };
 		3195834A1705E50E0053F95A /* AppBladePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 319583491705E50E0053F95A /* AppBladePlugin.m */; };
 		3195834C1705E6070053F95A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3195834B1705E6070053F95A /* Security.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -107,8 +109,10 @@
 		30E5649113A7FCAF007403D8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		31598D6017BA900D0025E75D /* AppBladeKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppBladeKeys.plist; path = AppBladePluginiOSExample/AppBladeKeys.plist; sourceTree = "<group>"; };
 		31598D6117BA900D0025E75D /* ResourceRules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ResourceRules.plist; path = AppBladePluginiOSExample/ResourceRules.plist; sourceTree = "<group>"; };
-		319583451705E5030053F95A /* AppBlade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBlade.h; sourceTree = "<group>"; };
-		319583461705E5030053F95A /* libAppBladeUniversal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppBladeUniversal.a; sourceTree = "<group>"; };
+		31598D6517BAA6150025E75D /* AppBlade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBlade.h; sourceTree = "<group>"; };
+		31598D6617BAA6150025E75D /* AppBladeKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppBladeKeys.plist; sourceTree = "<group>"; };
+		31598D6717BAA6150025E75D /* libAppBladeUniversal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppBladeUniversal.a; sourceTree = "<group>"; };
+		31598D6817BAA6150025E75D /* ResourceRules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ResourceRules.plist; sourceTree = "<group>"; };
 		319583481705E50E0053F95A /* AppBladePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBladePlugin.h; sourceTree = "<group>"; };
 		319583491705E50E0053F95A /* AppBladePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppBladePlugin.m; sourceTree = "<group>"; };
 		3195834B1705E6070053F95A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -141,7 +145,7 @@
 				301BF5C5109A6A2B0062928A /* SystemConfiguration.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */,
-				319583471705E5030053F95A /* libAppBladeUniversal.a in Frameworks */,
+				31598D6A17BAA6150025E75D /* libAppBladeUniversal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,8 +236,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				31598D6417BAA6150025E75D /* AppBladeSDK */,
 				3195834B1705E6070053F95A /* Security.framework */,
-				319583441705E5030053F95A /* AppBladeSDK */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -311,13 +315,16 @@
 			path = se.lproj;
 			sourceTree = "<group>";
 		};
-		319583441705E5030053F95A /* AppBladeSDK */ = {
+		31598D6417BAA6150025E75D /* AppBladeSDK */ = {
 			isa = PBXGroup;
 			children = (
-				319583451705E5030053F95A /* AppBlade.h */,
-				319583461705E5030053F95A /* libAppBladeUniversal.a */,
+				31598D6517BAA6150025E75D /* AppBlade.h */,
+				31598D6617BAA6150025E75D /* AppBladeKeys.plist */,
+				31598D6717BAA6150025E75D /* libAppBladeUniversal.a */,
+				31598D6817BAA6150025E75D /* ResourceRules.plist */,
 			);
-			path = AppBladeSDK;
+			name = AppBladeSDK;
+			path = AppBladePluginiOSExample/Plugins/AppBladeSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,6 +420,8 @@
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
 				31598D6217BA900D0025E75D /* AppBladeKeys.plist in Resources */,
 				31598D6317BA900D0025E75D /* ResourceRules.plist in Resources */,
+				31598D6917BAA6150025E75D /* AppBladeKeys.plist in Resources */,
+				31598D6B17BAA6150025E75D /* ResourceRules.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +519,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/AppBladeSDK\"",
+					"\"$(SRCROOT)/AppBladePluginiOSExample/Plugins/AppBladeSDK\"",
 				);
 				PRODUCT_NAME = AppBladePluginiOSExample;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,6 +541,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/AppBladeSDK\"",
+					"\"$(SRCROOT)/AppBladePluginiOSExample/Plugins/AppBladeSDK\"",
 				);
 				PRODUCT_NAME = AppBladePluginiOSExample;
 				TARGETED_DEVICE_FAMILY = "1,2";

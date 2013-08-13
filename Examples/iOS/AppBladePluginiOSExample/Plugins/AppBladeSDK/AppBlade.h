@@ -19,6 +19,8 @@ UIKIT_EXTERN int const kAppBladeParsingError;
 UIKIT_EXTERN int const kAppBladePermissionError;
 UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 
+#define APPBLADE_DEBUG_LOGGING 1
+#define APPBLADE_ERROR_LOGGING 1
 
 @class AppBlade;
 
