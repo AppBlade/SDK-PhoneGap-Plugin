@@ -13,8 +13,9 @@
         <engine name="cordova" version=">=2.5.0" />
     </engines>
 	
-    <access origin="*.appblade.com" />
-    <asset src="www/testflight.js" target="plugins/testflight.js" />
+    <access origin="*appblade.com" />
+    
+    <asset src="www/AppBlade.js" target="plugins/AppBlade.js" />
 
     <!-- ios -->
     <platform name="ios">
