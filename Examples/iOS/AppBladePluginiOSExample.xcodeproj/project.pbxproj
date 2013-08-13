@@ -40,6 +40,8 @@
 		30A0434814DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434314DC770100060A13 /* Localizable.strings */; };
 		30A0434914DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		31598D6217BA900D0025E75D /* AppBladeKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6017BA900D0025E75D /* AppBladeKeys.plist */; };
+		31598D6317BA900D0025E75D /* ResourceRules.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31598D6117BA900D0025E75D /* ResourceRules.plist */; };
 		319583471705E5030053F95A /* libAppBladeUniversal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 319583461705E5030053F95A /* libAppBladeUniversal.a */; };
 		3195834A1705E50E0053F95A /* AppBladePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 319583491705E50E0053F95A /* AppBladePlugin.m */; };
 		3195834C1705E6070053F95A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3195834B1705E6070053F95A /* Security.framework */; };
@@ -103,6 +105,8 @@
 		30A0434414DC770100060A13 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = Localizable.strings; sourceTree = "<group>"; };
 		30A0434714DC770100060A13 /* se */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = se; path = Localizable.strings; sourceTree = "<group>"; };
 		30E5649113A7FCAF007403D8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		31598D6017BA900D0025E75D /* AppBladeKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppBladeKeys.plist; path = AppBladePluginiOSExample/AppBladeKeys.plist; sourceTree = "<group>"; };
+		31598D6117BA900D0025E75D /* ResourceRules.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ResourceRules.plist; path = AppBladePluginiOSExample/ResourceRules.plist; sourceTree = "<group>"; };
 		319583451705E5030053F95A /* AppBlade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBlade.h; sourceTree = "<group>"; };
 		319583461705E5030053F95A /* libAppBladeUniversal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAppBladeUniversal.a; sourceTree = "<group>"; };
 		319583481705E50E0053F95A /* AppBladePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppBladePlugin.h; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				31598D6017BA900D0025E75D /* AppBladeKeys.plist */,
+				31598D6117BA900D0025E75D /* ResourceRules.plist */,
 				F840E1F0165FE0F500CFE078 /* config.xml */,
 				301BF56E109A69640062928A /* www */,
 				301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */,
@@ -405,6 +411,8 @@
 				3088BBC1154F3926009F9C59 /* Default@2x~iphone.png in Resources */,
 				3088BBC2154F3926009F9C59 /* Default~iphone.png in Resources */,
 				D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */,
+				31598D6217BA900D0025E75D /* AppBladeKeys.plist in Resources */,
+				31598D6317BA900D0025E75D /* ResourceRules.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
