@@ -1,12 +1,30 @@
-AppBladeSDK PhoneGap Plugin
-===================
+PhoneGap Plugin for the AppBlade SDK
+=================== 
+*Phonegap 2.5 - 3.0*
 
-Plugin for PhoneGap that uses the AppBlade SDK.
 
-###Organization
-For each operating system currently supported by the SDK there is a folder which contains a `/Plugin` folder that contains the plugin, and `/Example` folder which contains a sample project to get you started.
+###Current platforms supported:
+ * iOS 
+  * Deployment target iOS 5.0 
+ * Android 
+  * Minimum Android SDK Version 9 
+  * Target Android SDK Version 17
 
-##Installation - iOS
+#Before You Install
+
+It would help if you have already signed up with [AppBlade](https://appblade.com) to get your credentials. [Sign up here!](https://appblade.com/users/new)
+
+Also make sure you have Xcode, and Eclipse installed (plugman as well if you want to add the plugin automagically). 
+
+ * Xcode Version 4.6.3 (4H1503)
+ * Eclipse SDK Version: 3.7.2
+ * plugman version 0.10.0
+
+## Plugman Installation
+
+coming soon
+
+##Manual Installation - iOS
 
 1. Copy `AppBlade.js` from into your `www` directory.
 2. Copy `AppBladePlugin.[hm]` into your Plugins folder.
@@ -17,7 +35,7 @@ For each operating system currently supported by the SDK there is a folder which
 
 See the Example project included for examples using the other functions of the SDK.
 
-##Installation - Android
+##Manual Installation - Android
 
 1. Copy `AppBlade.js` into your `www` directory.
 2. Add `AppBladePlugin.java` to your project.
@@ -30,4 +48,5 @@ See the Example project included for examples using the other functions of the S
 
 ##Resources:
 ###[AppBlade.com](https://appblade.com/)
+###[AppBlade Support](support.appblade.com/)
 ###[License and Terms](https://appblade.com/terms_of_use)
