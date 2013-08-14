@@ -26,12 +26,5 @@
 
 - (void)setCustomParameter:(CDVInvokedUrlCommand*)command;
 - (void)clearCustomParameters:(CDVInvokedUrlCommand*)command;
-//
-////DEPRECATED METHODS. WILL BE REMOVED IN THE IMMEDIATE FUTURE
-//- (void)setupAppBlade:(NSMutableArray*)args withDict:(NSMutableDictionary*)options __attribute__((deprecated));
-//- (void)catchAndReportCrashes:(NSMutableArray*)args withDict:(NSMutableDictionary*)options __attribute__((deprecated));
-//- (void)allowFeedbackReporting:(NSMutableArray*)args withDict:(NSMutableDictionary*)options __attribute__((deprecated));
-//- (void)checkAuthentication:(NSMutableArray*)args withDict:(NSMutableDictionary*)options __attribute__((deprecated));
-//- (void)setCustomParameter:(NSMutableArray *)args withDict:(NSMutableDictionary *)options __attribute__((deprecated));
 
 @end

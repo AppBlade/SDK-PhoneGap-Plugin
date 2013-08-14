@@ -22,16 +22,8 @@ enum {
 {
     CDVPluginResult* pluginResult = nil;
     if (command.arguments != nil && [[command arguments] count] == 4) {
-        NSString* project = [[command arguments] objectAtIndex:0];
-        NSString* token =  [[command arguments] objectAtIndex:1];
-        NSString* secret = [[command arguments] objectAtIndex:2];
-        NSString* timestamp =  [[command arguments] objectAtIndex:3];
-        
         AppBlade *blade = [AppBlade sharedManager];
-        blade.appBladeProjectID = project;
-        blade.appBladeProjectToken = token;
-        blade.appBladeProjectSecret = secret;
-        blade.appBladeProjectIssuedTimestamp = timestamp;
+        [blade registerWithAppBladePlist];
 
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     } else {
@@ -70,46 +62,10 @@ enum {
 
 - (void)allowFeedbackReporting:(CDVInvokedUrlCommand*)command
 {
-    [[AppBlade sharedManager] allowFeedbackReporting];
-    
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Catch and Report Crashes via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
+    NSLog(@"allowFeedbackReporting");
 
-- (void)showFeedbackDialog:(CDVInvokedUrlCommand*)command
-{
-    if([[command arguments] count] == 1)
-    {
-        NSString *noScreenShotCheck = (NSString *)[[command arguments] objectAtIndex:0];
-        [[noScreenShotCheck lowercaseString] isEqualToString:@"noscreenshot"];
-    }
-    
-    [[AppBlade sharedManager] showFeedbackDialogue];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Show Feedback via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
-
-- (void)startSession:(CDVInvokedUrlCommand*)command
-{
-    [AppBlade startSession];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Start Session via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
-- (void)endSession:(CDVInvokedUrlCommand*)command
-{
-    [AppBlade endSession];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"End Session via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
-
-
-- (void)setCustomParameter:(CDVInvokedUrlCommand*)command
-{
     NSString* resultMessage = @"Allow Feedback via Plugin";
-    if(nil != command.arguments && [[[command arguments] objectAtIndex:0] isKindOfClass:[NSString class]])
+    if(nil != command.arguments && [[command arguments] count] == 1 && [[[command arguments] objectAtIndex:0] isKindOfClass:[NSString class]])
     {
         resultMessage =  @"Custom Feedback via Plugin";
         if([((NSString *)[[command arguments] objectAtIndex:0]) isEqualToString:@"Custom"])
@@ -120,7 +76,56 @@ enum {
         [[AppBlade sharedManager] allowFeedbackReporting];
     }
     
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:resultMessage];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Catch and Report Crashes via Plugin"];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)showFeedbackDialog:(CDVInvokedUrlCommand*)command
+{
+    BOOL showScreenshot = YES;
+    if([[command arguments] count] == 1)
+    {
+        NSString *noScreenShotCheck = (NSString *)[[command arguments] objectAtIndex:0];
+        showScreenshot = [[noScreenShotCheck lowercaseString] isEqualToString:@"withscreenshot"];
+    }
+    
+    [[AppBlade sharedManager] showFeedbackDialogue:showScreenshot];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Show Feedback via Plugin"];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+- (void)startSession:(CDVInvokedUrlCommand*)command
+{
+    [[AppBlade sharedManager] logSessionStart];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Start Session via Plugin"];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)endSession:(CDVInvokedUrlCommand*)command
+{
+    [[AppBlade sharedManager] logSessionEnd];
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"End Session via Plugin"];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+
+
+- (void)setCustomParameter:(CDVInvokedUrlCommand*)command
+{
+    CDVPluginResult* pluginResult = nil;
+    if([[command arguments] count] == 2)
+    {
+        NSString* key = [[command arguments] objectAtIndex:0];
+        NSString* val = [[command arguments] objectAtIndex:1];
+        [[AppBlade sharedManager] setCustomParam:val forKey:key];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Setting a Custom Parameter via Plugin"];
+    }
+    else
+    {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect number of arguments"];
+    }
+
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
 }
@@ -131,89 +136,6 @@ enum {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Clearing all parameters via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
-
-
-//DEPRECATED METHODS. WILL BE REMOVED IN THE IMMEDIATE FUTURE
-
-//- (void)setupAppBlade:(NSMutableArray*)args withDict:(NSMutableDictionary*)options
-//{
-//    NSArray* keys = [args objectAtIndex:0];
-//    NSLog(@"Setup with stuff: %@", keys);
-//    NSString* project = [keys objectAtIndex:ABProjectID];
-//    NSString* token = [keys objectAtIndex:ABToken];
-//    NSString* secret = [keys objectAtIndex:ABSecretKey];
-//    NSString* timestamp = [keys objectAtIndex:ABTimestamp];
-//    
-//    AppBlade *blade = [AppBlade sharedManager];
-//    blade.appBladeProjectID = project;
-//    blade.appBladeProjectToken = token;
-//    blade.appBladeProjectSecret = secret;
-//    blade.appBladeProjectIssuedTimestamp = timestamp;
-//}
-//
-//- (void)catchAndReportCrashes:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Catch and Report Crashes via Plugin");
-//    [[AppBlade sharedManager] catchAndReportCrashes];
-//}
-//
-//- (void)checkAuthentication:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Check approval via Plugin");
-//    [[AppBlade sharedManager] checkApproval];
-//}
-//
-//- (void)allowFeedbackReporting:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Allow Feedback via Plugin");
-//    if(nil != args && [[args objectAtIndex:0] isKindOfClass:[NSString class]])
-//    {
-//        NSLog(@"Custom Feedback via Plugin");
-//        if([((NSString *)[args objectAtIndex:0]) isEqualToString:@"Custom"])
-//            [[AppBlade sharedManager] setupCustomFeedbackReporting];
-//    }
-//    else
-//    {
-//        [[AppBlade sharedManager] allowFeedbackReporting];
-//    }
-//}
-//
-//- (void)showFeedbackDialog:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Show Feedback via Plugin");
-//    [[AppBlade sharedManager] showFeedbackDialogue];
-//}
-//
-//
-//
-//- (void)startSession:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Start Session via Plugin");
-//    [AppBlade startSession];
-//}
-//
-//- (void)endSession:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"End Session via Plugin");
-//    [AppBlade endSession];
-//}
-//
-//
-//- (void)setCustomParameter:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Setting a Custom Parameter via Plugin");
-//    NSArray* keyAndVal = [args objectAtIndex:0];
-//    NSString* key = [keyAndVal objectAtIndex:0];
-//    NSString* val = [keyAndVal objectAtIndex:1];
-//    
-//    [[AppBlade sharedManager] setCustomParam:val forKey:key];
-//}
-//
-//- (void)clearCustomParameters:(NSMutableArray *)args withDict:(NSMutableDictionary *)options
-//{
-//    NSLog(@"Clearing all parameters via Plugin");
-//    [[AppBlade sharedManager] clearAllCustomParams];
-//}
 
 
 @end
