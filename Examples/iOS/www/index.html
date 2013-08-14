@@ -25,7 +25,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
     </head>
-    <body>
+    <body onload="onLoad()">
         <div class="app">
             <h1>AppBlade Cordova</h1>
             <div id="deviceready" class="blink">
@@ -55,6 +55,15 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
+            function onLoad(){
+                
+                plugins.appBlade.setupAppBlade('d85a7cbe-dc09-418c-8d1a-74494b4b8b7c','fd32e4e153e22984238e18ce94c98270', 'a209f1a859243e12e0c86605366fe207', '1364415328');
+                plugins.appBlade.catchAndReportCrashes();
+                plugins.appBlade.allowFeedbackReporting();
+                plugins.appBlade.checkAuthentication();
+
+            }
+            
             
             function onFeedbackClick(){
 				plugins.appBlade.showFeedbackDialog();

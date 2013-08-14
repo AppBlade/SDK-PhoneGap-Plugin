@@ -34,12 +34,6 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        
-        plugins.appBlade.setupAppBlade('d85a7cbe-dc09-418c-8d1a-74494b4b8b7c','fd32e4e153e22984238e18ce94c98270', 'a209f1a859243e12e0c86605366fe207', '1364415328');
-        plugins.appBlade.catchAndReportCrashes();
-        plugins.appBlade.allowFeedbackReporting();
-        plugins.appBlade.checkAuthentication();
-        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
