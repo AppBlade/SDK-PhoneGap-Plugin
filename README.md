@@ -1,23 +1,18 @@
-<!-- 
-****************************
-NOTICE: THIS IS THE GITHUB README. FOR A BETTER READABLE README ON YOUR LOCAL MACHINE SEE README.txt IN THIS DIRECTORY 
-****************************
--->
 AppBladeSDK PhoneGap Plugin
 ===================
-
-Plugin for PhoneGap that uses the AppBlade SDK.
 
 Current supported Cordova versions : 2.5.0 - 2.9.0
 
 Pending release: [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0)
+
+For help, contact [AppBlade Support](https://support.appblade.com/).
 
 ###Organization
 For each operating system currently supported by the SDK there is a folder in the `/Plugin` folder that contains the plugin, and a project in the `/Examples` folder which should help you get started.
 
 
 ##Manual Installation
-Currently only the manual installation is supported. Plugman is going to be officially supported in the very near future.  
+Currently only the manual installation is supported. Plugman is going to be officially supported in the very near future (pending the release of our [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0) coverage).  
 
 ##Installation - iOS
 
@@ -28,8 +23,7 @@ Currently only the manual installation is supported. Plugman is going to be offi
 <br/> 
 <br/>
 3. Add the AppBlade SDK to your project. 
-<br/>*(These directions are for adding the binary compiled files, adding AppBlade source to a PhoneGap project is currently not supported)*
-  *3a.* Drag the AppBLadeSDK folder with the AppBlade.h and libAppBladeUniversal.a files into your PhoneGap project in Xcode. (Make sure "Copy items" is checked.)
+<br/>*3a.* Drag the AppBladeSDK folder with the AppBlade.h and libAppBladeUniversal.a files into your PhoneGap project in Xcode. (Make sure "Copy items" is checked.)
 <br/>*3b.* Under "Link Binary With Libraries" In your Target's "Build Phases" Click the "+" button and add the Library named "Security.Framework" to your project.
 <br/>*3c.* Build the Project in Xcode to ensure that everything is running.
 <br/>
@@ -46,7 +40,7 @@ Currently only the manual installation is supported. Plugman is going to be offi
 <br/>
 <br/>
 6. Make AppBlade.js referenceable. 
-<br/>*There are many ways to do this, as AppBlade.js can be treated jet like  any other js file. This is just an example:* 
+<br/>*There are many ways to do this, as AppBlade.js can be treated just like  any other js file. This is just an example:* 
 <br/>*6a.* In your `index.html` file add `<script type="text/javascript" src="js/AppBlade.js"></script>` after the "cordova-2.5.0.js" script reference and before the "js/index.js" script reference:
 
         <script type="text/javascript" src="cordova-[2.5.0+].js"></script>
@@ -126,4 +120,5 @@ See the Example project included for examples using the other functions of the S
 
 ##Resources:
 ###[AppBlade.com](https://appblade.com/)
+###[AppBlade Support](https://support.appblade.com/)
 ###[License and Terms](https://appblade.com/terms_of_use)
