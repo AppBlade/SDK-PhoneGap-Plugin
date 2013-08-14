@@ -19,8 +19,6 @@ UIKIT_EXTERN int const kAppBladeParsingError;
 UIKIT_EXTERN int const kAppBladePermissionError;
 UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 
-#define APPBLADE_DEBUG_LOGGING 1
-#define APPBLADE_ERROR_LOGGING 1
 
 @class AppBlade;
 
@@ -121,8 +119,11 @@ UIKIT_EXTERN NSString* const kAppBladeCacheDirectory;
 - (void)showFeedbackDialogue:(BOOL)withScreenshot;
 
 
-+ (void)startSession;
-+ (void)endSession;
++ (void)startSession __attribute__((deprecated("use method -(void)logSessionStart instead")));
+-(void)logSessionStart;
+
++ (void)endSession __attribute__((deprecated("use method -(void)logSessionEnd instead")));
+- (void)logSessionEnd;
 
 
 - (void)refreshToken:(NSString *)tokenToConfirm;
