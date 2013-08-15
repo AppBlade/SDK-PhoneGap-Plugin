@@ -57,6 +57,7 @@
             app.initialize();
             function onLoad(){
                 document.addEventListener('deviceready', loadAppBlade, false);
+	            document.addEventListener("resume", onResume, false);
             }
             
             function loadAppBlade(){
@@ -66,6 +67,12 @@
                 plugins.appBlade.checkAuthentication();
             }
             
+			function onResume() {
+		   	setTimeout(function() {
+                plugins.appBlade.checkAuthentication();
+        	}, 0);
+}
+
             
             function onFeedbackClick(){
 				plugins.appBlade.showFeedbackDialog();
