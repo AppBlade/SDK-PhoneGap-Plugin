@@ -27,10 +27,11 @@
 
         </config-file>
 
+
         <header-file src="src/ios/AppBlade.h" />
         <header-file src="src/ios/AppBladePlugin.h"/>
         <source-file src="src/ios/AppBladePlugin.m" />
-        <source-file src="src/ios/libAppBlade.a" framework="true"/>
+        <source-file src="src/ios/libAppBladeUniversal.a" framework="true"/>
 
         <resource-file src="src/ios/AppBladeKeys.plist" target-dir="/" />
         <resource-file src="src/ios/ResourceRules.plist" target-dir="/" />
