@@ -39,7 +39,6 @@
         <resource-file src="src/ios/AppBladeKeys.plist" target-dir="/" />
         <resource-file src="src/ios/ResourceRules.plist" target-dir="/" />
 
-        <asset src="www/AppBlade.js" target="AppBlade.js" />
 
         <framework src="Security.framework"/>
     
