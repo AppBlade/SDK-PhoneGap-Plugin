@@ -20,15 +20,11 @@
     <!-- ios -->
     <platform name="ios">
 
-        <config-file target="config.xml" parent="/*/plugins">
-            <plugin name="AppBladeSDK" value="CDVTestFlight"/>
-        </config-file>
-        
-        <!-- feature tag in config.xml -->
-        <config-file target="config.xml" parent="/widget">
-          <feature name="AppBladeSDK">
-            <param name="ios-package" value="CDVAppBlade"/>
-          </feature>
+        <config-file target="config.xml" parent="/*">
+            <feature name="AppBlade">
+        		<param name="ios-package" value="AppBladePlugin" />
+			</feature>
+
         </config-file>
 
         <header-file src="src/ios/AppBlade.h" />
