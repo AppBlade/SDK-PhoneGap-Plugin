@@ -6,7 +6,7 @@
     <name>AppBlade SDK</name>
 	<description>AppBlade's Official Cordova Plugin</description>
 	
-	<keywords>android,ios,crash,reporting,feedback,mam,killswitch</keywords>
+	<keywords>android,ios,crash,feedback,reporting,crash-reporting,feedback-reporting,session-tracking,security,killswitch,mam</keywords>
 
 	
     <engines>
