@@ -14,7 +14,7 @@
     </engines>
 	
     <access origin="*appblade.com" />
-    <asset src="www/AppBlade.js" target="AppBlade.js" />
+    <asset src="www/AppBlade.js" target="js/AppBlade.js" />
 
     <!-- ios -->
     <platform name="ios">
@@ -23,18 +23,18 @@
             <feature name="AppBlade">
         		<param name="ios-package" value="AppBladePlugin" />
 			</feature>
-
         </config-file>
 
-
-        <header-file src="src/ios/AppBlade.h" />
         <header-file src="src/ios/AppBladePlugin.h"/>
         <source-file src="src/ios/AppBladePlugin.m" />
-        <source-file src="src/ios/libAppBladeUniversal.a" framework="true"/>
+
+        <header-file src="src/ios/AppBlade.h" />
+
+        <source-file src="src/ios/LibAppBladeUniversal.a" framework="true"/>
+
 
         <resource-file src="src/ios/AppBladeKeys.plist" target-dir="/" />
         <resource-file src="src/ios/ResourceRules.plist" target-dir="/" />
-
 
         <framework src="Security.framework"/>
     
