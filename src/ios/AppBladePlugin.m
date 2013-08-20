@@ -94,30 +94,19 @@ enum {
 }
 
 
+
 - (void)startSession:(CDVInvokedUrlCommand*)command
 {
-<<<<<<< HEAD:src/ios/AppBladePlugin.m
     [[AppBlade sharedManager] logSessionStart];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Start Session via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-=======
-		[[AppBlade sharedManager] logSessionStart];
-		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Start Session via Plugin"];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
->>>>>>> refs/heads/master:Examples/iOS/AppBladePluginiOSExample/Plugins/AppBladePlugin.m
 }
 
 - (void)endSession:(CDVInvokedUrlCommand*)command
 {
-<<<<<<< HEAD:src/ios/AppBladePlugin.m
     [[AppBlade sharedManager] logSessionEnd];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"End Session via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-=======
-		[[AppBlade sharedManager] logSessionEnd];
-		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"End Session via Plugin"];
-		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
->>>>>>> refs/heads/master:Examples/iOS/AppBladePluginiOSExample/Plugins/AppBladePlugin.m
 }
 
 
