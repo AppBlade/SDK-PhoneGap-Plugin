@@ -20,35 +20,31 @@ enum {
 
 - (void)setupAppBlade:(CDVInvokedUrlCommand*)command
 {
-    CDVPluginResult* pluginResult = nil;
     if (command.arguments != nil && [[command arguments] count] == 4) {
+        // Check command.arguments here.
         AppBlade *blade = [AppBlade sharedManager];
         [blade registerWithAppBladePlist];
 
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:@"Incorrect number of arguments"];
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR  messageAsString:@"Incorrect number of arguments"];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
-    
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)checkAuthentication:(CDVInvokedUrlCommand*)command
 {
-    [[AppBlade sharedManager] checkApproval];
-
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Check approval via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
+		[[AppBlade sharedManager] checkApproval];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Check approval via Plugin"];
+    	[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)checkForUpdates:(CDVInvokedUrlCommand*)command
 {
     [[AppBlade sharedManager] checkForUpdates];
-
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Checking For Updates via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
 }
 
 
@@ -62,22 +58,20 @@ enum {
 
 - (void)allowFeedbackReporting:(CDVInvokedUrlCommand*)command
 {
-    NSLog(@"allowFeedbackReporting");
-
-    NSString* resultMessage = @"Allow Feedback via Plugin";
     if(nil != command.arguments && [[command arguments] count] == 1 && [[[command arguments] objectAtIndex:0] isKindOfClass:[NSString class]])
     {
-        resultMessage =  @"Custom Feedback via Plugin";
-        if([((NSString *)[[command arguments] objectAtIndex:0]) isEqualToString:@"Custom"])
-            [[AppBlade sharedManager] setupCustomFeedbackReporting];
+			if([((NSString *)[[command arguments] objectAtIndex:0]) isEqualToString:@"Custom"]){
+				[[AppBlade sharedManager] setupCustomFeedbackReporting];
+				CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Custom Feedback via Plugin"];
+				[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+			}
     }
     else
     {
-        [[AppBlade sharedManager] allowFeedbackReporting];
+			[[AppBlade sharedManager] allowFeedbackReporting];
+			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Allow Feedback via Plugin"];
+			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
-    
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Catch and Report Crashes via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)showFeedbackDialog:(CDVInvokedUrlCommand*)command
@@ -88,53 +82,69 @@ enum {
         NSString *noScreenShotCheck = (NSString *)[[command arguments] objectAtIndex:0];
         showScreenshot = [[noScreenShotCheck lowercaseString] isEqualToString:@"withscreenshot"];
     }
-    
-    [[AppBlade sharedManager] showFeedbackDialogue:showScreenshot];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Show Feedback via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    if(showScreenshot){
+			[[AppBlade sharedManager] showFeedbackDialogue:true];
+			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Show Feedback via Plugin"];
+			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }else{
+			[[AppBlade sharedManager] showFeedbackDialogue:false];
+			CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Show Feedback via Plugin (no screenshot)"];
+			[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }
 }
 
 
 - (void)startSession:(CDVInvokedUrlCommand*)command
 {
+<<<<<<< HEAD:src/ios/AppBladePlugin.m
     [[AppBlade sharedManager] logSessionStart];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Start Session via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+=======
+		[[AppBlade sharedManager] logSessionStart];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Start Session via Plugin"];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+>>>>>>> refs/heads/master:Examples/iOS/AppBladePluginiOSExample/Plugins/AppBladePlugin.m
 }
 
 - (void)endSession:(CDVInvokedUrlCommand*)command
 {
+<<<<<<< HEAD:src/ios/AppBladePlugin.m
     [[AppBlade sharedManager] logSessionEnd];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"End Session via Plugin"];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+=======
+		[[AppBlade sharedManager] logSessionEnd];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"End Session via Plugin"];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+>>>>>>> refs/heads/master:Examples/iOS/AppBladePluginiOSExample/Plugins/AppBladePlugin.m
 }
 
 
 
 - (void)setCustomParameter:(CDVInvokedUrlCommand*)command
 {
-    CDVPluginResult* pluginResult = nil;
-    if([[command arguments] count] == 2)
-    {
-        NSString* key = [[command arguments] objectAtIndex:0];
-        NSString* val = [[command arguments] objectAtIndex:1];
-        [[AppBlade sharedManager] setCustomParam:val forKey:key];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Setting a Custom Parameter via Plugin"];
-    }
-    else
-    {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect number of arguments"];
-    }
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
+		CDVPluginResult* pluginResult = nil;
+		if([[command arguments] count] == 2)
+		{
+			NSString* key = [[command arguments] objectAtIndex:0];
+			NSString* val = [[command arguments] objectAtIndex:1];
+			[[AppBlade sharedManager] setCustomParam:val forKey:key];
+			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Setting a Custom Parameter via Plugin"];
+		}
+		else
+		{
+			pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Incorrect number of arguments"];
+		}
+	
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 - (void)clearCustomParameters:(CDVInvokedUrlCommand*)command
 {
-    [[AppBlade sharedManager] clearAllCustomParams];
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Clearing all parameters via Plugin"];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+		[[AppBlade sharedManager] clearAllCustomParams];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Clearing all parameters via Plugin"];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 
