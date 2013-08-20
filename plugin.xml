@@ -14,7 +14,7 @@
     </engines>
 	
     <access origin="*appblade.com" />
-    <asset src="www/AppBlade.js" target="plugins/AppBlade.js" />
+    <asset src="www/AppBlade.js" target="AppBlade.js" />
 
     <!-- ios -->
     <platform name="ios">
@@ -40,7 +40,7 @@
     
         <info>
         	AppBlade iOS Plugin Installed
-			Make sure you add &lt;script type="text/javascript" src="plugins/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
+			Make sure you add &lt;script type="text/javascript" src="js/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
 	    	And have taken the additional steps documented at https://github.com/AppBlade/SDK-PhoneGap-Plugin#installation---ios
 	    </info>
     </platform>
@@ -52,7 +52,7 @@
 		<framework src="httpmime-4.1.2.jar" />
         <info>
         	AppBlade Android Plugin Installed 
-			Make sure you add &lt;script type="text/javascript" src="plugins/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
+			Make sure you add &lt;script type="text/javascript" src="js/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
 	    	And have taken the additional steps documented at https://github.com/AppBlade/SDK-PhoneGap-Plugin#installation---android
 	    </info>
     </platform>    
