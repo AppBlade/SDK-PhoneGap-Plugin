@@ -48,8 +48,8 @@
     <platform name="android">
 
         <header-file src="src/android/AppBladePlugin.java" target-dir="src/com/$PACKAGE_NAME/plugins" />
-        <source-file src="src/android/AppBlade\ Framework.a" target-dir="src/lib/" />
-		<framework src="httpmime-4.1.2.jar" />
+        <source-file src="src/android/appblade-0.9.3.jar" target-dir="src/lib/" framework="true" />
+		<source-file src="src/android/httpmime-4.1.2.jar" target-dir="src/lib/" framework="true" />
         <info>
         	AppBlade Android Plugin Installed 
 			Make sure you add &lt;script type="text/javascript" src="js/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
