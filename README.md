@@ -18,13 +18,13 @@ Also make sure you have Xcode, and Eclipse installed (plugman as well if you wan
 
  * Xcode Version 4.6.3 (4H1503)
  * Eclipse SDK Version: 3.7.2
- * plugman version 0.10.0
+ * (optional) plugman version 0.10.0
 
 ## Plugman Installation
 
-AppBlade is plugman compatible
+AppBlade is plugman compatible for ios
 
-   plugman install --platform [your platform] --plugin Your-Path-To-The-AppBlade-PhoneGap-Plugin/ --project Your-Project/platforms/[your platform]/
+   plugman install --platform ios --plugin Your-Path-To-The-AppBlade-PhoneGap-Plugin/ --project Your-Project/platforms/ios/
 
 
 ##Manual Installation - iOS
