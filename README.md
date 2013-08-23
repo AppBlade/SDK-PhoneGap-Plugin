@@ -3,7 +3,7 @@ AppBladeSDK PhoneGap Plugin
 
 Current supported Cordova versions : 2.5.0 - 2.9.0
 
-Pending release: [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0)
+Our Support for [Phonegap 3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0) is in a spearate branch. 
 
 For help, contact [AppBlade Support](https://support.appblade.com/).
 
