@@ -22,7 +22,10 @@ Also make sure you have Xcode, and Eclipse installed (plugman as well if you wan
 
 ## Plugman Installation
 
-coming soon
+AppBlade is plugman compatible
+
+   plugman install --platform [your platform] --plugin Your-Path-To-The-AppBlade-PhoneGap-Plugin/ --project Your-Project/platforms/[your platform]/
+
 
 ##Manual Installation - iOS
 
