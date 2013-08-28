@@ -25,48 +25,12 @@ Also make sure you have Xcode, and Eclipse installed (plugman as well if you wan
 
 ## Plugman Installation
 
-AppBlade is plugman compatible for ios
+AppBlade is plugman compatible for iOS (not Android, but [we're working on that](https://github.com/AppBlade/SDK-PhoneGap-Plugin/issues/12).)
 
    plugman install --platform ios --plugin Your-Path-To-The-AppBlade-PhoneGap-Plugin/ --project Your-Project/platforms/ios/
 
 
 ##Manual Installation - iOS
-
-1. Copy `AppBlade.js` from into your `www` directory.
-2. Copy `AppBladePlugin.[hm]` into your Plugins folder.
-3. Follow directions for [adding plugins to your iOS project](http://wiki.phonegap.com/w/page/43708792/How%20to%20Install%20a%20PhoneGap%20Plugin%20for%20iOS).
-3. Follow directions for [adding the AppBlade SDK to your project](http://github.com/AppBlade/SDK).
-4. Add `-all_load` to the `other linker flags` build setting for your target.
-5. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
-
-See the Example project included for examples using the other functions of the SDK.
-
-##Manual Installation - Android
-
-1. Copy `AppBlade.js` into your `www` directory.
-2. Add `AppBladePlugin.java` to your project.
-3. Follow directions for [adding plugins to your Android project](http://wiki.phonegap.com/w/page/43708611/How%20to%20Install%20a%20PhoneGap%20Plugin%20for%20Android).
-3. Follow directions for [adding the AppBlade SDK to your project](http://github.com/AppBlade/SDK), but do not do the last 2 steps where you edit your main activity file.
-3. In your `index.html`, register for the `"deviceready"` eventListener, and call the setup method with your SDK keys in this order: project, token, secret, issued timestamp.
-
-=======
-AppBladeSDK PhoneGap Plugin
-===================
-
-Current supported Cordova versions : 2.5.0 - 2.9.0
-
-Pending release: [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0)
-
-For help, contact [AppBlade Support](https://support.appblade.com/).
-
-###Organization
-For each operating system currently supported by the SDK there is a folder in the `/Plugin` folder that contains the plugin, and a project in the `/Examples` folder which should help you get started.
-
-
-##Manual Installation
-Currently only the manual installation is supported. Plugman is going to be officially supported in the very near future (pending the release of our [3.0.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/tree/phonegap_v3.0) coverage).  
-
-##Installation - iOS
 
 1. Copy `AppBlade.js` into your `www/js` directory.
 <br/> 
