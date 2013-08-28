@@ -10,6 +10,9 @@ PhoneGap Plugin for the AppBlade SDK
   * Minimum Android SDK Version 9 
   * Target Android SDK Version 17
 
+###License
+Like most phonegap plugins, our plugin is under the [Apache Version 2.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/blob/phonegap_v3.0/APACHE-LICENSE-2.0.txt) license. 
+
 #Before You Install
 
 It would help if you have already signed up with [AppBlade](https://appblade.com) to get your credentials. [Sign up here!](https://appblade.com/users/new)
