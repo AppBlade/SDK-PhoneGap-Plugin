@@ -1,6 +1,6 @@
 PhoneGap Plugin for the AppBlade SDK
 =================== 
-*For Phonegap 3.0*
+*For Phonegap 3.4*
 
 
 ###Current platforms supported:
