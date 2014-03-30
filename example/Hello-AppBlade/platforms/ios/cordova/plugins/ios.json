@@ -1,1 +1,0 @@
-{"prepare_queue":{"installed":[],"uninstalled":[]},"config_munge":{"framework":{"Security.framework":{"false":1}},"config.xml":{"/*":{"<feature name=\"AppBlade\"><param name=\"ios-package\" value=\"AppBladePlugin\" /></feature>":1}}},"installed_plugins":{"com.appblade.cordova.plugin":{"PACKAGE_NAME":"com.phonegap.hello-appblade"}},"dependent_plugins":{}}
