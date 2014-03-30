@@ -24,18 +24,6 @@ Also make sure you have Xcode, and Eclipse installed
  * Xcode Version 5 or above
  * Eclipse Platform Version 4.3.2 with Android Development Kit 22.6.2 or above 
 
-If you support plugman for your plugins
-
- * Plugman version 0.20.2
- 
- 
-
-## Plugman Installation (iOS only)
-
-AppBlade is plugman compatible for iOS (not Android, but [we're working on that](https://github.com/AppBlade/SDK-PhoneGap-Plugin/issues/12).)
-
-      plugman install --platform ios --plugin Your-Path-To-The-AppBlade-PhoneGap-Plugin/ --project Your-Project/platforms/ios/
-
 ##Manual Installation - iOS
 
 1. Copy `AppBlade.js` into your `www/js` directory.
