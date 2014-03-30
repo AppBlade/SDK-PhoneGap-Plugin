@@ -1,14 +1,16 @@
 PhoneGap Plugin for the AppBlade SDK
 =================== 
-*Phonegap 2.5 - 3.0*
+*For Phonegap 3.0*
 
 
 ###Current platforms supported:
  * iOS 
   * Deployment target iOS 5.0 
  * Android 
-  * Minimum Android SDK Version 9 
-  * Target Android SDK Version 17
+  * Minimum Android SDK Version 10 
+  * Target Android SDK Version 19
+  
+Our Source code for Phonegap versions before 3.0.0 can be found [on our github release page](https://github.com/AppBlade/SDK-PhoneGap-Plugin/releases). 
 
 ###License
 Like most phonegap plugins, our plugin is under the [Apache Version 2.0](https://github.com/AppBlade/SDK-PhoneGap-Plugin/blob/phonegap_v3.0/APACHE-LICENSE-2.0.txt) license. 
@@ -19,16 +21,15 @@ It would help if you have already signed up with [AppBlade](https://appblade.com
 
 Also make sure you have Xcode, and Eclipse installed (plugman as well if you want to add the plugin automagically). 
 
- * Xcode Version 4.6.3 (4H1503)
- * Eclipse SDK Version: 3.7.2
+ * Xcode Version 5 or above
+ * Eclipse Platform Version 4.3.2 with Android Development Kit 22.6.2 or above 
  * (optional) plugman version 0.10.0
 
-## Plugman Installation
+## Plugman Installation (iOS only)
 
 AppBlade is plugman compatible for iOS (not Android, but [we're working on that](https://github.com/AppBlade/SDK-PhoneGap-Plugin/issues/12).)
 
    plugman install --platform ios --plugin Your-Path-To-The-AppBlade-PhoneGap-Plugin/ --project Your-Project/platforms/ios/
-
 
 ##Manual Installation - iOS
 
@@ -77,7 +78,7 @@ The following example sets up the app blade plugin with API keys (actual values 
 
 See the Example projects included for examples using the other functions of the SDK.
 
-##Installation - Android
+##Manual Installation - Android
 
 1. Copy `AppBlade.js` into your `assets/www/js` directory.
 <br/>*1a.* In your Package Explorer, expand your project and expand `assets` > `www` > `js`
