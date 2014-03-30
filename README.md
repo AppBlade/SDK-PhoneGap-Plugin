@@ -1,6 +1,6 @@
 PhoneGap Plugin for the AppBlade SDK
 =================== 
-*For Phonegap 3.4*
+*For Phonegap 3.4, the open source release of the Apache Cordova engine *
 
 
 ###Current platforms supported:
