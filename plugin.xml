@@ -33,7 +33,7 @@
     <platform name="android">
 
         <header-file src="src/android/AppBladePlugin.java" target-dir="src/com/$PACKAGE_NAME/plugins" />
-        <source-file src="src/android/appblade-0.9.3.jar" target-dir="src/lib/" framework="true" />
+        <source-file src="src/android/appblade-0.9.6.jar" target-dir="src/lib/" framework="true" />
 		<source-file src="src/android/httpmime-4.1.2.jar" target-dir="src/lib/" framework="true" />
         <info>
         	AppBlade Android Plugin Installed 
