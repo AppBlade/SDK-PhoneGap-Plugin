@@ -1,7 +1,44 @@
-<?xml version='1.0' encoding='utf-8'?>
-<plugin id="com.appblade.cordova-plugin" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>AppBlade</name>
-    <js-module name="AppBlade" src="www/AppBlade.js">
-        <clobbers target="cordova.plugins.AppBlade" />
-    </js-module>
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.appblade.cordova.plugin"
+    version="0.9.1">
+    <name>AppBlade SDK</name>
+	<description>AppBlade's Official Cordova/Phonegap Plugin</description>
+    <license>Apache 2.0</license>
+	<keywords>android,ios,crash,feedback,reporting,crash-reporting,feedback-reporting,session-tracking,security,killswitch,mam</keywords>
+        <js-module src="www/AppBlade.js" name="AppBlade">
+            <clobbers target="AppBlade" />
+        </js-module>
+        <platform name="ios">
+            <config-file target="config.xml" parent="/*">
+                <feature name="AppBlade">
+                    <param name="ios-package" value="AppBladePlugin"/>
+                </feature>
+            </config-file>
+        <access origin="*appblade.com" />
+        <header-file src="src/ios/AppBladePlugin.h"/>
+        <source-file src="src/ios/AppBladePlugin.m" />
+        <header-file src="src/ios/AppBlade.h" />
+        <source-file src="src/ios/LibAppBladeUniversal.a" framework="true"/>
+        <framework src="Security.framework"/>
+        <info>
+        	AppBlade iOS Plugin Installed
+			Make sure you add &lt;script type="text/javascript" src="js/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
+	    	And have taken the additional steps documented at https://github.com/AppBlade/SDK-PhoneGap-Plugin#installation---ios
+	    </info>
+
+    </platform>
+    <!-- android -->
+    <platform name="android">
+
+        <header-file src="src/android/AppBladePlugin.java" target-dir="src/com/$PACKAGE_NAME/plugins" />
+        <source-file src="src/android/appblade-0.9.3.jar" target-dir="src/lib/" framework="true" />
+		<source-file src="src/android/httpmime-4.1.2.jar" target-dir="src/lib/" framework="true" />
+        <info>
+        	AppBlade Android Plugin Installed 
+			Make sure you add &lt;script type="text/javascript" src="js/AppBlade.js"&gt;&lt;/script&gt; to your index.html:
+	    	And have taken the additional steps documented at https://github.com/AppBlade/SDK-PhoneGap-Plugin#installation---android
+	    </info>
+    </platform>    
 </plugin>
